@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, Buttons,
-  ExtCtrls, Process, LazFileUtils;
+  ExtCtrls, Process;
 
 type
 
@@ -145,24 +145,18 @@ begin
     S := TStringList.Create;
 
     S.Add('{');
-    S.Add('    # Важно: forward_proxy обрабатывается перед file_server');
-    S.Add('    order forward_proxy first');
+    S.Add('order forward_proxy before file_server');
     S.Add('}');
-    S.Add('');
-    S.Add(DomainEdit.Text + ' {');
-    S.Add('');
-    S.Add('    # 1. Forward proxy с авторизацией');
-    S.Add('    forward_proxy {');
-    S.Add('        basic_auth ' + UserEdit.Text + ' "' + PasswordEdit.Text + '"');
-    S.Add('        hide_ip');
-    S.Add('        hide_via');
-    S.Add('        probe_resistance');
-    S.Add('    }');
-    S.Add('');
-    S.Add('    # 2. Маскировка обычным сайтом');
-    S.Add('    file_server {');
-    S.Add('        root /var/www/html');
-    S.Add('    }');
+    S.Add(':443, daily-handbook.duckdns.org {');
+    S.Add('forward_proxy {');
+    S.Add('  basic_auth marsik 43651v0REwPPxRS');
+    S.Add('  hide_ip');
+    S.Add('  hide_via');
+    S.Add('  probe_resistance');
+    S.Add('}');
+    S.Add('file_server {');
+    S.Add('  root /var/www/html');
+    S.Add('}');
     S.Add('}');
 
     //Для /etc/caddy/Caddyfile на сервере
