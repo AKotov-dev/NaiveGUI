@@ -179,6 +179,9 @@ var
 begin
   MainForm.Caption := Application.Title;
 
+  if not DirectoryExists(GetUserDir + '.config/naivegui') then
+    ForceDirectories(GetUserDir + '.config/naivegui');
+
   //Запуск потока проверки состояния сервиса (active/inactive)
   FServiceStateTRD := ServiceState.Create(False);
   FServiceStateTRD.Priority := tpNormal;

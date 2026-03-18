@@ -6,13 +6,14 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, Buttons,
-  ExtCtrls, Process;
+  ExtCtrls, Process, LazFileUtils;
 
 type
 
   { TMainForm }
 
   TMainForm = class(TForm)
+    Label2: TLabel;
     ZoneBox: TComboBox;
     DomainEdit: TEdit;
     SPortEdit: TEdit;
@@ -177,6 +178,9 @@ var
   FShowLogTRD, FServiceStateTRD: TThread;
 begin
   MainForm.Caption := Application.Title;
+
+  if not DirectoryExists(GetUserDir + '.config/naivegui') then
+    ForceDirectories(GetUserDir + '.config/naivegui');
 
   //Запуск потока проверки состояния сервиса (active/inactive)
   FServiceStateTRD := ServiceState.Create(False);
