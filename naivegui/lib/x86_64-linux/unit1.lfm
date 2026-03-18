@@ -1,0 +1,241 @@
+object MainForm: TMainForm
+  Left = 299
+  Height = 623
+  Top = 131
+  Width = 770
+  Caption = 'NaiveGUI'
+  ClientHeight = 623
+  ClientWidth = 770
+  LCLVersion = '4.4.0.0'
+  OnCreate = FormCreate
+  OnShow = FormShow
+  object Label1: TLabel
+    Left = 8
+    Height = 17
+    Top = 40
+    Width = 47
+    Caption = 'Domain'
+  end
+  object DomainEdit: TEdit
+    Left = 64
+    Height = 37
+    Top = 32
+    Width = 232
+    TabOrder = 0
+  end
+  object Label3: TLabel
+    Left = 8
+    Height = 17
+    Top = 119
+    Width = 27
+    Caption = 'User'
+  end
+  object UserEdit: TEdit
+    Left = 48
+    Height = 37
+    Top = 108
+    Width = 152
+    TabOrder = 1
+  end
+  object Label4: TLabel
+    Left = 232
+    Height = 17
+    Top = 120
+    Width = 58
+    Caption = 'Password'
+  end
+  object PasswordEdit: TEdit
+    Left = 296
+    Height = 37
+    Top = 108
+    Width = 168
+    TabOrder = 2
+  end
+  object StartBtn: TSpeedButton
+    Left = 532
+    Height = 36
+    Top = 173
+    Width = 123
+    Caption = 'Start'
+    OnClick = StartBtnClick
+  end
+  object StopBtn: TSpeedButton
+    Left = 664
+    Height = 36
+    Top = 174
+    Width = 95
+    Caption = 'Stop'
+    OnClick = StopBtnClick
+  end
+  object Label5: TLabel
+    Left = 8
+    Height = 17
+    Top = 8
+    Width = 52
+    Caption = 'Server:'
+    Font.Height = -13
+    Font.Name = 'Sans'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label6: TLabel
+    Left = 8
+    Height = 17
+    Top = 88
+    Width = 47
+    Caption = 'Client:'
+    Font.Height = -13
+    Font.Name = 'Sans'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object SpeedButton3: TSpeedButton
+    Left = 488
+    Height = 60
+    Top = 8
+    Width = 271
+    Caption = 'Create Client and Server'
+    OnClick = SpeedButton3Click
+  end
+  object Label7: TLabel
+    Left = 486
+    Height = 17
+    Top = 119
+    Width = 48
+    Caption = 'SOCKS5'
+  end
+  object Label8: TLabel
+    Left = 640
+    Height = 17
+    Top = 119
+    Width = 34
+    Caption = 'HTTP'
+  end
+  object SPortEdit: TEdit
+    Left = 540
+    Height = 37
+    Top = 108
+    Width = 80
+    TabOrder = 3
+    Text = '1080'
+  end
+  object HPortEdit: TEdit
+    Left = 679
+    Height = 37
+    Top = 108
+    Width = 80
+    TabOrder = 4
+    Text = '8889'
+  end
+  object Label9: TLabel
+    Left = 486
+    Height = 17
+    Top = 88
+    Width = 86
+    Caption = 'Local ports:'
+    Font.Height = -13
+    Font.Name = 'Sans'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label10: TLabel
+    Left = 184
+    Height = 17
+    Top = 179
+    Width = 21
+    Caption = 'URI'
+  end
+  object URIEdit: TEdit
+    Left = 216
+    Height = 37
+    Top = 172
+    Width = 248
+    TabOrder = 6
+    Text = 'URIEdit'
+  end
+  object Shape1: TShape
+    AnchorSideTop.Control = StartBtn
+    AnchorSideTop.Side = asrCenter
+    AnchorSideRight.Control = StartBtn
+    Left = 518
+    Height = 12
+    Top = 185
+    Width = 11
+    Anchors = [akTop, akRight]
+    BorderSpacing.Left = 8
+    BorderSpacing.Right = 3
+    Brush.Color = clYellow
+    Pen.Color = clGray
+    Shape = stCircle
+  end
+  object StaticText1: TStaticText
+    AnchorSideLeft.Control = Owner
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = Owner
+    AnchorSideBottom.Side = asrBottom
+    Left = 0
+    Height = 20
+    Top = 603
+    Width = 770
+    Align = alBottom
+    Caption = 'License: GPLv3   Author: alex_q_2000 (C) 2026   https://github.com/AKotov-dev/NaiveGUI'
+    Font.Color = clGray
+    Font.Height = -11
+    Font.Name = 'Sans'
+    ParentFont = False
+    TabOrder = 7
+  end
+  object ZoneBox: TComboBox
+    Left = 48
+    Height = 37
+    Top = 172
+    Width = 100
+    Font.Height = -13
+    Font.Name = 'Sans'
+    Font.Style = [fsBold]
+    ItemHeight = 0
+    Items.Strings = (
+      '.by'
+      '.cn'
+      '.ir'
+      '.kz'
+      '.ru'
+      '.sa'
+      '.tm'
+      '.tr'
+      '.uz'
+    )
+    ParentFont = False
+    Sorted = True
+    TabOrder = 5
+    Text = '.ru'
+  end
+  object Label11: TLabel
+    Left = 10
+    Height = 17
+    Top = 179
+    Width = 31
+    Caption = 'Zone'
+  end
+  object LogMemo: TMemo
+    Left = 0
+    Height = 378
+    Top = 225
+    Width = 770
+    Align = alBottom
+    Font.Height = -13
+    Font.Name = 'Liberation Mono'
+    ParentFont = False
+    ScrollBars = ssVertical
+    TabOrder = 8
+    WantReturns = False
+  end
+  object Label2: TLabel
+    Left = 296
+    Height = 17
+    Top = 40
+    Width = 26
+    Caption = ':443'
+  end
+end

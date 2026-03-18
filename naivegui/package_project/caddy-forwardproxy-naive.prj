@@ -1,0 +1,97 @@
+[NAME]
+name=caddy-forwardproxy-naive
+
+[VERSION]
+version=2.10.0
+
+[RELEASE]
+release=0.mrx9
+
+[GROUP]
+group=Accessibility
+
+[DESCRIPTION]
+0=Forward proxy plugin for the Caddy web server
+1=---
+2=More information: /usr/share/doc/package_name/repack.txt
+
+[MAINTAINER]
+maintainer=Alex Kotov
+
+[VENDOR]
+vendor=alex_q_2000 (C) 2026
+
+[SUMMARY]
+summary=Forward proxy plugin for the Caddy web server
+
+[URLCOPY]
+urlcopy=https://github.com/klzgrad/forwardproxy
+
+[LICENSE]
+license=Apache
+
+[DEPS]
+deps=systemd
+
+[META]
+meta=0
+
+[NOARCH]
+noarch=0
+
+[DEB]
+deb=1
+
+[FILES]
+0=/usr/bin/caddy
+1=/var/www/html/index.html
+2=/etc/systemd/system/caddy.service
+3=/usr/share/doc/caddy-forwardproxy-naive/
+
+[AFTERINSTALL]
+0=#!/bin/bash
+1=
+2=if [ ! -d /etc/caddy ]; then mkdir /etc/caddy; fi
+3=systemctl daemon-reload
+
+[AFTERREMOVE]
+0=#!/bin/bash
+1=
+2=systemctl daemon-reload
+
+[URL32]
+url32=https://github.com/klzgrad/forwardproxy
+
+[PROGRAMNAME]
+programname=caddy-forwardproxy-naive
+
+[DEVTOOL]
+devtool=Go
+
+[TOOLVERSION]
+toolversion=unknown
+
+[INFO]
+0=Secure forward proxy for the Caddy web server
+1=This package registers the http.handlers.forward_proxy module, which acts as an HTTPS proxy for accessing remote networks.
+2=
+3=Experimental!
+4=This module is EXPERIMENTAL. We need more users to test this module for bugs and weaknesses before we recommend its use from within surveilled networks or regions with active censorship. Do not rely on this code in situations where personal safety, freedom, or privacy are at risk.
+5=
+6=You can help by:
+7=
+8=Safely deploying this module
+9=Trying to break it
+10=Contributing to the code and tests in this repo to make it better
+11=We are also seeking experienced maintainers who have experience with these kinds of technologies and who are interested in continuing its development.
+12=
+13=Expect breaking changes.
+14=
+15=Features
+16=HTTP/1.1, HTTP/2, and HTTP/3 support
+17=Authentication
+18=Access control lists
+19=Optional probe resistance
+20=PAC file
+21=Introduction
+22=This Caddy module allows you to use your web server as a proxy server, configurable by numerous HTTP clients such as operating systems, web browsers, mobile devices, and apps. However, the feature set of each client varies widely, as does their correctness and security guarantees. You will have to be aware of each clients' individual weaknesses or shortcomings.
