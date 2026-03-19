@@ -90,10 +90,10 @@ object MainForm: TMainForm
     ParentFont = False
   end
   object SpeedButton3: TSpeedButton
-    Left = 488
+    Left = 568
     Height = 60
     Top = 8
-    Width = 271
+    Width = 191
     Caption = 'Create Client and Server'
     OnClick = SpeedButton3Click
   end
@@ -242,8 +242,16 @@ object MainForm: TMainForm
     Left = 352
     Height = 37
     Top = 32
-    Width = 112
+    Width = 96
     TabOrder = 9
     Text = '443'
+  end
+  object QUICBox: TCheckBox
+    Left = 463
+    Height = 32
+    Top = 32
+    Width = 66
+    Caption = 'QUIC'
+    TabOrder = 10
   end
 end

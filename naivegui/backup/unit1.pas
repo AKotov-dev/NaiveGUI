@@ -13,6 +13,7 @@ type
   { TMainForm }
 
   TMainForm = class(TForm)
+    QUICBox: TCheckBox;
     PortEdit: TEdit;
     Label2: TLabel;
     ZoneBox: TComboBox;
@@ -104,7 +105,7 @@ begin
     S.Add('      "type": "naive",');
     S.Add('      "tag": "proxy",');
     S.Add('      "server": "' + DomainEdit.Text + '",');
-    S.Add('      "server_port": 443,');
+    S.Add('      "server_port": ' + PortEdit.Text + ',');
     S.Add('      "username": "' + UserEdit.Text + '",');
     S.Add('      "password": "' + PasswordEdit.Text + '",');
     S.Add('      "tls": {');
@@ -146,18 +147,27 @@ begin
     S := TStringList.Create;
 
     S.Add('{');
-    S.Add('order forward_proxy before file_server');
+    S.Add('   order forward_proxy before file_server');
+
+    if not QUICBox.Checked then
+    begin
+      S.Add('   servers {');
+      S.Add('       protocols h1 h2');
+      S.Add('   }');
+    end;
     S.Add('}');
+
+    S.Add('');
     S.Add(':' + PortEdit.Text + ', ' + DomainEdit.Text + ' {');
-    S.Add('forward_proxy {');
-    S.Add('  basic_auth ' + UserEdit.Text + ' ' + PasswordEdit.Text);
-    S.Add('  hide_ip');
-    S.Add('  hide_via');
-    S.Add('  probe_resistance');
-    S.Add('}');
-    S.Add('file_server {');
-    S.Add('  root /var/www/html');
-    S.Add('}');
+    S.Add('   forward_proxy {');
+    S.Add('                 basic_auth ' + UserEdit.Text + ' ' + PasswordEdit.Text);
+    S.Add('                 hide_ip');
+    S.Add('                 hide_via');
+    S.Add('                 probe_resistance');
+    S.Add('   }');
+    S.Add('   file_server {');
+    S.Add('                 root /var/www/html');
+    S.Add('   }');
     S.Add('}');
 
     //Для /etc/caddy/Caddyfile на сервере
@@ -188,8 +198,18 @@ end;
 
 procedure TMainForm.FormShow(Sender: TObject);
 var
-  client_conf: string;
+  S, client_conf: string;
 begin
+  if FileExists(GetUserDir + '.config/naivegui/Caddyfile') then
+  begin
+    RunCommand('grep', ['protocols', GetUserDir + '.config/naivegui/Caddyfile'], S);
+
+    if Trim(S) = '' then QUICBox.Checked := True
+    else
+      QUICBox.Checked := False;
+    ShowMessage(S);
+  end;
+
   client_conf := GetUserDir + '.config/naivegui/client.json';
   if not FileExists(client_conf) then Exit;
 
