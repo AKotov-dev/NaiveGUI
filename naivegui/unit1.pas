@@ -104,7 +104,7 @@ begin
     S.Add('      "type": "naive",');
     S.Add('      "tag": "proxy",');
     S.Add('      "server": "' + DomainEdit.Text + '",');
-    S.Add('      "server_port": 443,');
+    S.Add('      "server_port": ' + PortEdit.Text + ',');
     S.Add('      "username": "' + UserEdit.Text + '",');
     S.Add('      "password": "' + PasswordEdit.Text + '",');
     S.Add('      "tls": {');
@@ -195,7 +195,7 @@ begin
 
   //Читаем параметры клиента и сервера
   DomainEdit.Text := JsonReadString(client_conf, 'outbounds[0].server');
-  //  PortEdit.Text := JsonReadString(client_conf, 'outbounds[0].server_port');
+  PortEdit.Text := JsonReadString(client_conf, 'outbounds[0].server_port');
   UserEdit.Text := JsonReadString(client_conf, 'outbounds[0].username');
   PasswordEdit.Text := JsonReadString(client_conf, 'outbounds[0].password');
 

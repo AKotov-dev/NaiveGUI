@@ -148,7 +148,7 @@ begin
     S.Add('{');
     S.Add('order forward_proxy before file_server');
     S.Add('}');
-    S.Add(':' + PortEdit + ', ' + DomainEdit.Text + ' {');
+    S.Add(':' + PortEdit.Text + ', ' + DomainEdit.Text + ' {');
     S.Add('forward_proxy {');
     S.Add('  basic_auth ' + UserEdit.Text + ' ' + PasswordEdit.Text);
     S.Add('  hide_ip');
@@ -195,7 +195,7 @@ begin
 
   //Читаем параметры клиента и сервера
   DomainEdit.Text := JsonReadString(client_conf, 'outbounds[0].server');
-  //  PortEdit.Text := JsonReadString(client_conf, 'outbounds[0].server_port');
+  PortEdit.Text := JsonReadString(client_conf, 'outbounds[0].server_port');
   UserEdit.Text := JsonReadString(client_conf, 'outbounds[0].username');
   PasswordEdit.Text := JsonReadString(client_conf, 'outbounds[0].password');
 
