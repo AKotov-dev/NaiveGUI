@@ -1,0 +1,15 @@
+[Unit]
+Description=NaiveGUI (sing-box)
+Wants=network-online.target
+After=network.target
+StartLimitIntervalSec=60
+StartLimitBurst=3
+
+[Service]
+Type=simple
+ExecStart=/opt/naivegui/sing-box run -c %h/.config/naivegui/client.json
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target
