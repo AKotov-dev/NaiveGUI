@@ -13,6 +13,7 @@ type
   { TMainForm }
 
   TMainForm = class(TForm)
+    PortEdit: TEdit;
     Label2: TLabel;
     ZoneBox: TComboBox;
     DomainEdit: TEdit;
@@ -147,7 +148,7 @@ begin
     S.Add('{');
     S.Add('order forward_proxy before file_server');
     S.Add('}');
-    S.Add(':443, ' + DomainEdit.Text + ' {');
+    S.Add(':' + PortEdit.Text + ', ' + DomainEdit.Text + ' {');
     S.Add('forward_proxy {');
     S.Add('  basic_auth ' + UserEdit.Text + ' ' + PasswordEdit.Text);
     S.Add('  hide_ip');

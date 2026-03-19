@@ -232,10 +232,18 @@ object MainForm: TMainForm
     WantReturns = False
   end
   object Label2: TLabel
-    Left = 296
+    Left = 320
     Height = 17
     Top = 40
     Width = 26
-    Caption = ':443'
+    Caption = 'Port'
+  end
+  object PortEdit: TEdit
+    Left = 352
+    Height = 37
+    Top = 32
+    Width = 112
+    TabOrder = 9
+    Text = '443'
   end
 end
