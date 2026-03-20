@@ -41,6 +41,8 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure Label2Click(Sender: TObject);
+    procedure Label2MouseEnter(Sender: TObject);
+    procedure Label2MouseLeave(Sender: TObject);
     procedure SpeedButton3Click(Sender: TObject);
     procedure StartBtnClick(Sender: TObject);
     procedure StopBtnClick(Sender: TObject);
@@ -320,6 +322,16 @@ end;
 procedure TMainForm.Label2Click(Sender: TObject);
 begin
   OpenURL('https://' + DomainEdit.Text);
+end;
+
+procedure TMainForm.Label2MouseEnter(Sender: TObject);
+begin
+  Label2.Font.Color := clRed;  //подсветка при наведении
+end;
+
+procedure TMainForm.Label2MouseLeave(Sender: TObject);
+begin
+  Label2.Font.Color := clBlue;  //подсветка при наведении
 end;
 
 //Создаём конфиги Клиента и Сервера

@@ -1,10 +1,10 @@
 object MainForm: TMainForm
   Left = 299
-  Height = 623
-  Top = 131
+  Height = 627
+  Top = 127
   Width = 822
   Caption = 'NaiveGUI'
-  ClientHeight = 623
+  ClientHeight = 627
   ClientWidth = 822
   SessionProperties = 'Height;Width;Top;Left'
   LCLVersion = '4.4.0.0'
@@ -351,7 +351,7 @@ object MainForm: TMainForm
     AnchorSideBottom.Side = asrBottom
     Left = 0
     Height = 20
-    Top = 603
+    Top = 607
     Width = 822
     Align = alBottom
     Caption = 'License: GPLv3   Author: alex_q_2000 (C) 2026   https://github.com/AKotov-dev/NaiveGUI'
@@ -399,11 +399,19 @@ object MainForm: TMainForm
     Caption = 'Bypass'
   end
   object LogMemo: TMemo
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = BypassBox
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = StaticText1
     Left = 0
-    Height = 378
-    Top = 225
+    Height = 386
+    Top = 221
     Width = 822
     Align = alBottom
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    BorderSpacing.Top = 15
     Font.Height = -13
     Font.Name = 'Liberation Mono'
     ParentFont = False

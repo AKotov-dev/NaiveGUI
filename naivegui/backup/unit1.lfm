@@ -574,6 +574,8 @@ object MainForm: TMainForm
     ParentShowHint = False
     ShowHint = True
     OnClick = Label2Click
+    OnMouseEnter = Label2MouseEnter
+    OnMouseLeave = Label2MouseLeave
   end
   object IniPropStorage1: TIniPropStorage
     StoredValues = <>
