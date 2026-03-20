@@ -89,8 +89,7 @@ begin
     A.Add('    gsettings set org.gnome.system.proxy.ftp   host "127.0.0.1"');
     A.Add('    gsettings set org.gnome.system.proxy.ftp   port ' + HPortEdit.Text);
     A.Add('    gsettings set org.gnome.system.proxy.socks host "127.0.0.1"');
-    A.Add('    gsettings set org.gnome.system.proxy.socks port ' +
-      SPortEdit.Text);
+    A.Add('    gsettings set org.gnome.system.proxy.socks port ' + SPortEdit.Text);
     A.Add('    gsettings set org.gnome.system.proxy ignore-hosts "[' +
       '''' + 'localhost' + '''' + ', ' + '''' + '127.0.0.1' + '''' +
       ', ' + '''' + '::1' + '''' + ']"');
@@ -113,8 +112,8 @@ begin
     A.Add('    kwriteconfig$v --file kioslaverc --group "Proxy Settings" --key ftpProxy   "http://127.0.0.1:' + HPortEdit.Text + '"');
     A.Add('    kwriteconfig$v --file kioslaverc --group "Proxy Settings" --key socksProxy "socks5h://127.0.0.1:' + SPortEdit.Text + '"');
     A.Add('    kwriteconfig$v --file kioslaverc --group "Proxy Settings" --key NoProxy    "['
-      + '''' + 'localhost' + '''' + ', ' + '''' + '127.0.0.1' +
-      '''' + ', ' + '''' + '::1' + '''' + ']"');
+      + '''' + 'localhost' + '''' + ', ' + '''' + '127.0.0.1' + '''' +
+      ', ' + '''' + '::1' + '''' + ']"');
     A.Add('  fi');
     A.Add('else');
     A.Add('  echo "unset proxy..."');
@@ -332,6 +331,7 @@ begin
 
   //Пересоздаём пускач прокси
   CreateSWProxy;
+  //Включаем прокси
   RunCommand('/bin/bash', ['-c', '~/.config/naivegui/swproxy.sh set'], S);
 
   RunCommand('systemctl', ['--user', 'restart', 'naivegui.service'], S, [poWaitOnExit]);
@@ -343,9 +343,10 @@ procedure TMainForm.StopBtnClick(Sender: TObject);
 var
   S: string;
 begin
-    //Пересоздаём пускач прокси
+  //Пересоздаём пускач прокси
   CreateSWProxy;
-  RunCommand('/bin/bash', ['-c', '~/.config/naivegui/swproxy.sh', 'unset'], S);
+  //Отключаем системный прокси
+  RunCommand('/bin/bash', ['-c', '~/.config/naivegui/swproxy.sh unset'], S);
 
   RunCommand('systemctl', ['--user', 'stop', 'naivegui.service'], S, [poWaitOnExit]);
   RunCommand('systemctl', ['--user', 'disable', 'naivegui.service'], S, [poWaitOnExit]);
