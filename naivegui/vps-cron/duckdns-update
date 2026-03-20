@@ -1,5 +1,5 @@
 #!/bin/bash
 
-# УКАЖИ СВОЙ ТОКЕН
+# УКАЖИ СВОЙ ДОМЕН (без duckdns.org) и ТОКЕН
 
-/usr/bin/curl -s "https://www.duckdns.org/update?domains=daily-handbook&token=ТВОЙ_ТОКЕН&ip="
+/usr/bin/curl -s "https://www.duckdns.org/update?domains=ТВОЙ_ДОМЕН&token=ТВОЙ_ТОКЕН&ip="
