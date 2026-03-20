@@ -1,5 +1,7 @@
 Скрипт для передёргивания DuckDNS чтобы бесплатный домен не отвалился через месяц
 
+cp ./duckdns-update /etc/cron.daily/duckdns-update
+
 chown root:root /etc/cron.daily/duckdns-update
 chmod 755 /etc/cron.daily/duckdns-update
 

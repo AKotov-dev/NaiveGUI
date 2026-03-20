@@ -1,5 +1,5 @@
 #!/bin/bash
 
-# УКАЖИ СВОЙ ДОМЕН (без duckdns.org) и ТОКЕН
+# УКАЖИ ТВОЙ СУБДОМЕН (т.е. без duckdns.org) и ТОКЕН
 
 /usr/bin/curl -s "https://www.duckdns.org/update?domains=ТВОЙ_ДОМЕН&token=ТВОЙ_ТОКЕН&ip="
