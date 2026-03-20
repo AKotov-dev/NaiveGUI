@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# УКАЖИ СВОЙ ТОКЕН
+
+/usr/bin/0 0 * * * curl -s "https://www.duckdns.org/update?domains=daily-handbook&token=ТВОЙ_ТОКЕН&ip="
