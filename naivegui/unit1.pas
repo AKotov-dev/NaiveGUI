@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, Buttons,
-  ExtCtrls, DefaultTranslator, IniPropStorage, Process;
+  ExtCtrls, DefaultTranslator, IniPropStorage, LCLIntf, Process;
 
 type
 
@@ -15,6 +15,7 @@ type
   TMainForm = class(TForm)
     Image1: TImage;
     IniPropStorage1: TIniPropStorage;
+    Label2: TLabel;
     QUICBox: TCheckBox;
     BypassBox: TComboBox;
     DomainEdit: TEdit;
@@ -39,6 +40,9 @@ type
     SpeedButton3: TSpeedButton;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure Label2Click(Sender: TObject);
+    procedure Label2MouseEnter(Sender: TObject);
+    procedure Label2MouseLeave(Sender: TObject);
     procedure SpeedButton3Click(Sender: TObject);
     procedure StartBtnClick(Sender: TObject);
     procedure StopBtnClick(Sender: TObject);
@@ -312,6 +316,22 @@ begin
   HPortEdit.Text := JsonReadString(client_conf, 'inbounds[1].listen_port');
 
   BypassBox.Text := JsonReadString(client_conf, 'dns.rules[0].domain_suffix[0]');
+end;
+
+//Проверка страницы
+procedure TMainForm.Label2Click(Sender: TObject);
+begin
+  OpenURL('https://' + DomainEdit.Text);
+end;
+
+procedure TMainForm.Label2MouseEnter(Sender: TObject);
+begin
+  Label2.Font.Color := clRed;  //подсветка при наведении
+end;
+
+procedure TMainForm.Label2MouseLeave(Sender: TObject);
+begin
+  Label2.Font.Color := clBlue;  //подсветка при наведении
 end;
 
 //Создаём конфиги Клиента и Сервера

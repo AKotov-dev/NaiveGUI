@@ -2,10 +2,10 @@ object MainForm: TMainForm
   Left = 299
   Height = 623
   Top = 131
-  Width = 807
+  Width = 822
   Caption = 'NaiveGUI'
   ClientHeight = 623
-  ClientWidth = 807
+  ClientWidth = 822
   SessionProperties = 'Height;Width;Top;Left'
   LCLVersion = '4.4.0.0'
   OnCreate = FormCreate
@@ -24,9 +24,12 @@ object MainForm: TMainForm
     AnchorSideTop.Side = asrCenter
     Left = 58
     Height = 37
+    Hint = 'Your domain without "https://"'
     Top = 30
     Width = 232
     BorderSpacing.Left = 3
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 0
   end
   object Label3: TLabel
@@ -74,7 +77,7 @@ object MainForm: TMainForm
     AnchorSideRight.Control = StopBtn
     AnchorSideBottom.Control = BypassBox
     AnchorSideBottom.Side = asrBottom
-    Left = 569
+    Left = 584
     Height = 37
     Top = 169
     Width = 123
@@ -89,7 +92,7 @@ object MainForm: TMainForm
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = StartBtn
     AnchorSideBottom.Side = asrBottom
-    Left = 700
+    Left = 715
     Height = 37
     Top = 169
     Width = 99
@@ -123,7 +126,7 @@ object MainForm: TMainForm
   object SpeedButton3: TSpeedButton
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
-    Left = 569
+    Left = 584
     Height = 60
     Top = 8
     Width = 230
@@ -268,7 +271,7 @@ object MainForm: TMainForm
     AnchorSideTop.Control = Label3
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = SPortEdit
-    Left = 513
+    Left = 524
     Height = 17
     Top = 119
     Width = 48
@@ -280,7 +283,7 @@ object MainForm: TMainForm
     AnchorSideTop.Control = Label3
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = HPortEdit
-    Left = 674
+    Left = 689
     Height = 17
     Top = 119
     Width = 34
@@ -291,7 +294,7 @@ object MainForm: TMainForm
   object SPortEdit: TEdit
     AnchorSideTop.Control = Label3
     AnchorSideTop.Side = asrCenter
-    Left = 564
+    Left = 575
     Height = 37
     Top = 109
     Width = 80
@@ -304,7 +307,7 @@ object MainForm: TMainForm
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
-    Left = 711
+    Left = 726
     Height = 37
     Top = 109
     Width = 88
@@ -315,7 +318,7 @@ object MainForm: TMainForm
   end
   object Label9: TLabel
     AnchorSideLeft.Control = Label7
-    Left = 513
+    Left = 524
     Height = 17
     Top = 88
     Width = 86
@@ -329,7 +332,7 @@ object MainForm: TMainForm
     AnchorSideTop.Control = StartBtn
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = StartBtn
-    Left = 555
+    Left = 570
     Height = 12
     Top = 181
     Width = 11
@@ -349,7 +352,7 @@ object MainForm: TMainForm
     Left = 0
     Height = 20
     Top = 603
-    Width = 807
+    Width = 822
     Align = alBottom
     Caption = 'License: GPLv3   Author: alex_q_2000 (C) 2026   https://github.com/AKotov-dev/NaiveGUI'
     Font.Color = clGray
@@ -399,7 +402,7 @@ object MainForm: TMainForm
     Left = 0
     Height = 378
     Top = 225
-    Width = 807
+    Width = 822
     Align = alBottom
     Font.Height = -13
     Font.Name = 'Liberation Mono'
@@ -551,6 +554,26 @@ object MainForm: TMainForm
       FBB7B94BB8844BF8FBC6FF01FF9A0185D450732F0000000049454E44AE426082
     }
     Visible = False
+  end
+  object Label2: TLabel
+    AnchorSideLeft.Control = DomainEdit
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = DomainEdit
+    AnchorSideTop.Side = asrCenter
+    Cursor = crHandPoint
+    Left = 293
+    Height = 17
+    Hint = 'The "caddy-forwardproxy-naive" package'#10'must be installed on the server'
+    Top = 40
+    Width = 102
+    BorderSpacing.Left = 3
+    Caption = 'Check the page...'
+    Font.Color = clBlue
+    Font.Style = [fsUnderline]
+    ParentFont = False
+    ParentShowHint = False
+    ShowHint = True
+    OnClick = Label2Click
   end
   object IniPropStorage1: TIniPropStorage
     StoredValues = <>

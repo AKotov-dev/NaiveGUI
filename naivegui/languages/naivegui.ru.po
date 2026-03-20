@@ -20,6 +20,10 @@ msgstr ""
 msgid "NaiveGUI"
 msgstr ""
 
+#: tmainform.domainedit.hint
+msgid "Your domain without \"https://\""
+msgstr "Ваш домен без \"https://\""
+
 #: tmainform.hportedit.text
 msgid "8889"
 msgstr ""
@@ -31,6 +35,18 @@ msgstr "Домен"
 #: tmainform.label11.caption
 msgid "Bypass"
 msgstr "Байпас"
+
+#: tmainform.label2.caption
+msgid "Check the page..."
+msgstr "Проверка страницы..."
+
+#: tmainform.label2.hint
+msgid ""
+"The \"caddy-forwardproxy-naive\" package\n"
+"must be installed on the server"
+msgstr ""
+"На сервере должен быть установлен\n"
+"пакет \"caddy-forwardproxy-naive\""
 
 #: tmainform.label3.caption
 msgid "User"
@@ -87,4 +103,3 @@ msgstr "Лицензия: GPLv3   Автор: alex_q_2000 (C) 2026   https://git
 #: tmainform.stopbtn.caption
 msgid "Stop"
 msgstr "Стоп"
-

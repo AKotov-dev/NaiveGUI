@@ -10,6 +10,10 @@ msgstr ""
 msgid "NaiveGUI"
 msgstr ""
 
+#: tmainform.domainedit.hint
+msgid "Your domain without \"https://\""
+msgstr ""
+
 #: tmainform.hportedit.text
 msgid "8889"
 msgstr ""
@@ -20,6 +24,16 @@ msgstr ""
 
 #: tmainform.label11.caption
 msgid "Bypass"
+msgstr ""
+
+#: tmainform.label2.caption
+msgid "Check the page..."
+msgstr ""
+
+#: tmainform.label2.hint
+msgid ""
+"The \"caddy-forwardproxy-naive\" package\n"
+"must be installed on the server"
 msgstr ""
 
 #: tmainform.label3.caption
