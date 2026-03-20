@@ -28,17 +28,9 @@ msgstr ""
 msgid "Domain"
 msgstr "Домен"
 
-#: tmainform.label10.caption
-msgid "URI"
-msgstr ""
-
 #: tmainform.label11.caption
 msgid "Bypass"
 msgstr "Байпас"
-
-#: tmainform.label2.caption
-msgid "Port"
-msgstr "Порт"
 
 #: tmainform.label3.caption
 msgid "User"
@@ -68,10 +60,6 @@ msgstr ""
 msgid "Local ports:"
 msgstr "Локальные порты:"
 
-#: tmainform.portedit.text
-msgid "443"
-msgstr ""
-
 #: tmainform.quicbox.caption
 msgid "QUIC"
 msgstr ""
@@ -99,3 +87,4 @@ msgstr "Лицензия: GPLv3   Автор: alex_q_2000 (C) 2026   https://git
 #: tmainform.stopbtn.caption
 msgid "Stop"
 msgstr "Стоп"
+

@@ -16,8 +16,6 @@ type
     Image1: TImage;
     IniPropStorage1: TIniPropStorage;
     QUICBox: TCheckBox;
-    PortEdit: TEdit;
-    Label2: TLabel;
     BypassBox: TComboBox;
     DomainEdit: TEdit;
     SPortEdit: TEdit;
@@ -26,8 +24,6 @@ type
     LogMemo: TMemo;
     Shape1: TShape;
     StaticText1: TStaticText;
-    URIEdit: TEdit;
-    Label10: TLabel;
     Label7: TLabel;
     Label8: TLabel;
     Label9: TLabel;
@@ -185,10 +181,16 @@ begin
     S.Add('');
     S.Add('  "outbounds": [');
     S.Add('    {');
-    S.Add('      "type": "naive",');
+
+    //Используем TCP или QUIC?
+    if QUICBox.Checked then
+      S.Add('      "type": "naive",')
+    else
+      S.Add('      "type": "http",');
+
     S.Add('      "tag": "proxy",');
     S.Add('      "server": "' + DomainEdit.Text + '",');
-    S.Add('      "server_port": ' + PortEdit.Text + ',');
+    S.Add('      "server_port": 443,');
     S.Add('      "username": "' + UserEdit.Text + '",');
     S.Add('      "password": "' + PasswordEdit.Text + '",');
     S.Add('      "tls": {');
@@ -231,17 +233,10 @@ begin
 
     S.Add('{');
     S.Add('   order forward_proxy before file_server');
-
-    if not QUICBox.Checked then
-    begin
-      S.Add('   servers {');
-      S.Add('       protocols h1 h2');
-      S.Add('   }');
-    end;
     S.Add('}');
 
     S.Add('');
-    S.Add(':' + PortEdit.Text + ', ' + DomainEdit.Text + ' {');
+    S.Add(':443, ' + DomainEdit.Text + ' {');
     S.Add('   forward_proxy {');
     S.Add('                 basic_auth ' + UserEdit.Text + ' ' + PasswordEdit.Text);
     S.Add('                 hide_ip');
@@ -294,24 +289,20 @@ end;
 
 procedure TMainForm.FormShow(Sender: TObject);
 var
-  S, client_conf: string;
+  client_conf: string;
 begin
   //Масштабирование для Plasma
   IniPropStorage1.Restore;
 
-  if FileExists(GetUserDir + '.config/naivegui/Caddyfile') then
-  begin
-    RunCommand('grep', ['protocols', GetUserDir + '.config/naivegui/Caddyfile'], S);
-
-    if Trim(S) = '' then QUICBox.Checked := True
-    else
-      QUICBox.Checked := False;
-  end;
-
   client_conf := GetUserDir + '.config/naivegui/client.json';
   if not FileExists(client_conf) then Exit;
 
-  //Читаем параметры клиента и сервера
+  //Читаем параметры клиента
+  if JsonReadString(client_conf, 'outbounds[0].type') = 'http' then
+    QUICBox.Checked := False
+  else
+    QUICBox.Checked := True;
+
   DomainEdit.Text := JsonReadString(client_conf, 'outbounds[0].server');
   PortEdit.Text := JsonReadString(client_conf, 'outbounds[0].server_port');
   UserEdit.Text := JsonReadString(client_conf, 'outbounds[0].username');

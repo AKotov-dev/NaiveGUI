@@ -46,7 +46,7 @@ object MainForm: TMainForm
     Top = 109
     Width = 152
     BorderSpacing.Left = 3
-    TabOrder = 3
+    TabOrder = 2
   end
   object Label4: TLabel
     AnchorSideTop.Control = Label3
@@ -67,7 +67,7 @@ object MainForm: TMainForm
     Top = 109
     Width = 168
     BorderSpacing.Left = 3
-    TabOrder = 4
+    TabOrder = 3
   end
   object StartBtn: TSpeedButton
     AnchorSideTop.Control = BypassBox
@@ -296,7 +296,7 @@ object MainForm: TMainForm
     Top = 109
     Width = 80
     Anchors = [akTop]
-    TabOrder = 5
+    TabOrder = 4
     Text = '1080'
   end
   object HPortEdit: TEdit
@@ -310,7 +310,7 @@ object MainForm: TMainForm
     Width = 88
     Anchors = [akTop, akRight]
     BorderSpacing.Right = 8
-    TabOrder = 6
+    TabOrder = 5
     Text = '8889'
   end
   object Label9: TLabel
@@ -324,29 +324,6 @@ object MainForm: TMainForm
     Font.Name = 'Sans'
     Font.Style = [fsBold]
     ParentFont = False
-  end
-  object Label10: TLabel
-    AnchorSideTop.Control = Label11
-    AnchorSideTop.Side = asrCenter
-    AnchorSideRight.Control = URIEdit
-    Left = 192
-    Height = 17
-    Top = 179
-    Width = 21
-    Anchors = [akTop, akRight]
-    BorderSpacing.Right = 3
-    Caption = 'URI'
-  end
-  object URIEdit: TEdit
-    AnchorSideTop.Control = Label11
-    AnchorSideTop.Side = asrCenter
-    AnchorSideBottom.Control = Label11
-    AnchorSideBottom.Side = asrCenter
-    Left = 216
-    Height = 37
-    Top = 169
-    Width = 248
-    TabOrder = 8
   end
   object Shape1: TShape
     AnchorSideTop.Control = StartBtn
@@ -379,7 +356,7 @@ object MainForm: TMainForm
     Font.Height = -11
     Font.Name = 'Sans'
     ParentFont = False
-    TabOrder = 10
+    TabOrder = 8
   end
   object BypassBox: TComboBox
     AnchorSideLeft.Control = Label11
@@ -408,7 +385,7 @@ object MainForm: TMainForm
     )
     ParentFont = False
     Sorted = True
-    TabOrder = 7
+    TabOrder = 6
     Text = '.ru'
   end
   object Label11: TLabel
@@ -428,46 +405,24 @@ object MainForm: TMainForm
     Font.Name = 'Liberation Mono'
     ParentFont = False
     ScrollBars = ssVertical
-    TabOrder = 9
+    TabOrder = 7
     WantReturns = False
   end
-  object Label2: TLabel
-    AnchorSideTop.Control = Label1
-    AnchorSideTop.Side = asrCenter
-    Left = 320
-    Height = 17
-    Top = 40
-    Width = 26
-    Caption = 'Port'
-  end
-  object PortEdit: TEdit
-    AnchorSideLeft.Control = Label2
-    AnchorSideLeft.Side = asrBottom
-    AnchorSideTop.Control = Label1
-    AnchorSideTop.Side = asrCenter
-    Left = 349
-    Height = 37
-    Top = 30
-    Width = 96
-    BorderSpacing.Left = 3
-    TabOrder = 1
-    Text = '443'
-  end
   object QUICBox: TCheckBox
-    AnchorSideTop.Control = Label1
+    AnchorSideTop.Control = Label11
     AnchorSideTop.Side = asrCenter
-    Left = 456
+    Left = 184
     Height = 32
     Hint = 'QUIC may be blocked in Russia'
-    Top = 32
+    Top = 171
     Width = 66
     Caption = 'QUIC'
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 2
+    TabOrder = 1
   end
   object Image1: TImage
-    Left = 480
+    Left = 464
     Height = 64
     Top = 152
     Width = 64

@@ -18,16 +18,8 @@ msgstr ""
 msgid "Domain"
 msgstr ""
 
-#: tmainform.label10.caption
-msgid "URI"
-msgstr ""
-
 #: tmainform.label11.caption
 msgid "Bypass"
-msgstr ""
-
-#: tmainform.label2.caption
-msgid "Port"
 msgstr ""
 
 #: tmainform.label3.caption
@@ -56,10 +48,6 @@ msgstr ""
 
 #: tmainform.label9.caption
 msgid "Local ports:"
-msgstr ""
-
-#: tmainform.portedit.text
-msgid "443"
 msgstr ""
 
 #: tmainform.quicbox.caption
