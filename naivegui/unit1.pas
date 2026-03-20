@@ -6,13 +6,15 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, Buttons,
-  ExtCtrls, Process;
+  ExtCtrls, XMLPropStorage, IniPropStorage, Process;
 
 type
 
   { TMainForm }
 
   TMainForm = class(TForm)
+    Image1: TImage;
+    IniPropStorage1: TIniPropStorage;
     QUICBox: TCheckBox;
     PortEdit: TEdit;
     Label2: TLabel;
@@ -261,12 +263,25 @@ end;
 
 procedure TMainForm.FormCreate(Sender: TObject);
 var
+  bmp: TBitmap;
   FShowLogTRD, FServiceStateTRD: TThread;
 begin
   MainForm.Caption := Application.Title;
 
+  // Устраняем баг иконки приложения
+  bmp := TBitmap.Create;
+  try
+    bmp.PixelFormat := pf32bit;
+    bmp.Assign(Image1.Picture.Graphic);
+    Application.Icon.Assign(bmp);
+  finally
+    bmp.Free;
+  end;
+
   if not DirectoryExists(GetUserDir + '.config/naivegui') then
     ForceDirectories(GetUserDir + '.config/naivegui');
+
+  IniPropStorage1.IniFileName := GetUserDir + '.config/naivegui/naivegui.conf';
 
   //Запуск потока проверки состояния сервиса (active/inactive)
   FServiceStateTRD := ServiceState.Create(False);
@@ -281,6 +296,9 @@ procedure TMainForm.FormShow(Sender: TObject);
 var
   S, client_conf: string;
 begin
+  //Масштабирование для Plasma
+  IniPropStorage1.Restore;
+
   if FileExists(GetUserDir + '.config/naivegui/Caddyfile') then
   begin
     RunCommand('grep', ['protocols', GetUserDir + '.config/naivegui/Caddyfile'], S);
