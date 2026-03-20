@@ -1,0 +1,92 @@
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8"
+
+#: tmainform.bypassbox.text
+msgctxt "tmainform.bypassbox.text"
+msgid ".ru"
+msgstr ""
+
+#: tmainform.caption
+msgid "NaiveGUI"
+msgstr ""
+
+#: tmainform.hportedit.text
+msgid "8889"
+msgstr ""
+
+#: tmainform.label1.caption
+msgid "Domain"
+msgstr ""
+
+#: tmainform.label10.caption
+msgid "URI"
+msgstr ""
+
+#: tmainform.label11.caption
+msgid "Bypass"
+msgstr ""
+
+#: tmainform.label2.caption
+msgid "Port"
+msgstr ""
+
+#: tmainform.label3.caption
+msgid "User"
+msgstr ""
+
+#: tmainform.label4.caption
+msgid "Password"
+msgstr ""
+
+#: tmainform.label5.caption
+msgid "Server:"
+msgstr ""
+
+#: tmainform.label6.caption
+msgid "Client:"
+msgstr ""
+
+#: tmainform.label7.caption
+msgid "SOCKS5"
+msgstr ""
+
+#: tmainform.label8.caption
+msgid "HTTP"
+msgstr ""
+
+#: tmainform.label9.caption
+msgid "Local ports:"
+msgstr ""
+
+#: tmainform.portedit.text
+msgid "443"
+msgstr ""
+
+#: tmainform.quicbox.caption
+msgid "QUIC"
+msgstr ""
+
+#: tmainform.quicbox.hint
+msgid "QUIC may be blocked in Russia"
+msgstr ""
+
+#: tmainform.speedbutton3.caption
+msgid "Create Client and Server"
+msgstr ""
+
+#: tmainform.sportedit.text
+msgid "1080"
+msgstr ""
+
+#: tmainform.startbtn.caption
+msgid "Start"
+msgstr ""
+
+#: tmainform.statictext1.caption
+msgid "License: GPLv3   Author: alex_q_2000 (C) 2026   https://github.com/AKotov-dev/NaiveGUI"
+msgstr ""
+
+#: tmainform.stopbtn.caption
+msgid "Stop"
+msgstr ""
+

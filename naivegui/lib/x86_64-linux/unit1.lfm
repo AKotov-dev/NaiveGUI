@@ -67,9 +67,9 @@ object MainForm: TMainForm
     TabOrder = 4
   end
   object StartBtn: TSpeedButton
-    AnchorSideTop.Control = ZoneBox
+    AnchorSideTop.Control = BypassBox
     AnchorSideRight.Control = StopBtn
-    AnchorSideBottom.Control = ZoneBox
+    AnchorSideBottom.Control = BypassBox
     AnchorSideBottom.Side = asrBottom
     Left = 569
     Height = 37
@@ -325,10 +325,13 @@ object MainForm: TMainForm
   object Label10: TLabel
     AnchorSideTop.Control = Label11
     AnchorSideTop.Side = asrCenter
-    Left = 184
+    AnchorSideRight.Control = URIEdit
+    Left = 192
     Height = 17
     Top = 179
     Width = 21
+    Anchors = [akTop, akRight]
+    BorderSpacing.Right = 3
     Caption = 'URI'
   end
   object URIEdit: TEdit
@@ -341,7 +344,6 @@ object MainForm: TMainForm
     Top = 169
     Width = 248
     TabOrder = 8
-    Text = 'URIEdit'
   end
   object Shape1: TShape
     AnchorSideTop.Control = StartBtn
@@ -376,13 +378,16 @@ object MainForm: TMainForm
     ParentFont = False
     TabOrder = 10
   end
-  object ZoneBox: TComboBox
+  object BypassBox: TComboBox
+    AnchorSideLeft.Control = Label11
+    AnchorSideLeft.Side = asrBottom
     AnchorSideTop.Control = Label11
     AnchorSideTop.Side = asrCenter
-    Left = 48
+    Left = 52
     Height = 37
     Top = 169
     Width = 100
+    BorderSpacing.Left = 3
     Font.Height = -13
     Font.Name = 'Sans'
     Font.Style = [fsBold]
@@ -407,8 +412,8 @@ object MainForm: TMainForm
     Left = 8
     Height = 17
     Top = 179
-    Width = 31
-    Caption = 'Zone'
+    Width = 41
+    Caption = 'Bypass'
   end
   object LogMemo: TMemo
     Left = 0

@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, Buttons,
-  ExtCtrls, XMLPropStorage, IniPropStorage, Process;
+  ExtCtrls, DefaultTranslator, IniPropStorage, Process;
 
 type
 
@@ -18,7 +18,7 @@ type
     QUICBox: TCheckBox;
     PortEdit: TEdit;
     Label2: TLabel;
-    ZoneBox: TComboBox;
+    BypassBox: TComboBox;
     DomainEdit: TEdit;
     SPortEdit: TEdit;
     HPortEdit: TEdit;
@@ -166,7 +166,7 @@ begin
     S.Add('      { "tag": "local",  "type": "udp", "server": "8.8.4.4" }');
     S.Add('    ],');
     S.Add('    "rules": [');
-    S.Add('      { "domain_suffix": ["' + ZoneBox.Text + '"], "server": "local" }');
+    S.Add('      { "domain_suffix": ["' + BypassBox.Text + '"], "server": "local" }');
     S.Add('    ]');
     S.Add('  },');
     S.Add('');
@@ -205,7 +205,7 @@ begin
     S.Add('  "route": {');
     S.Add('    "rules": [');
     S.Add('      {');
-    S.Add('        "domain_suffix": ["' + ZoneBox.Text + '"],');
+    S.Add('        "domain_suffix": ["' + BypassBox.Text + '"],');
     S.Add('        "outbound": "direct"');
     S.Add('      }');
     S.Add('    ],');
@@ -296,6 +296,9 @@ procedure TMainForm.FormShow(Sender: TObject);
 var
   S, client_conf: string;
 begin
+  //Масштабирование для Plasma
+  IniPropStorage1.Restore;
+
   if FileExists(GetUserDir + '.config/naivegui/Caddyfile') then
   begin
     RunCommand('grep', ['protocols', GetUserDir + '.config/naivegui/Caddyfile'], S);
@@ -317,7 +320,7 @@ begin
   SPortEdit.Text := JsonReadString(client_conf, 'inbounds[0].listen_port');
   HPortEdit.Text := JsonReadString(client_conf, 'inbounds[1].listen_port');
 
-  ZoneBox.Text := JsonReadString(client_conf, 'dns.rules[0].domain_suffix[0]');
+  BypassBox.Text := JsonReadString(client_conf, 'dns.rules[0].domain_suffix[0]');
 end;
 
 //Создаём конфиги Клиента и Сервера
@@ -336,7 +339,7 @@ var
 begin
   //Не запускать, если поля пустые
   if (DomainEdit.Text = '') or (UserEdit.Text = '') or (PasswordEdit.Text = '') or
-    (SPortEdit.Text = '') or (HPortEdit.Text = '') or (ZoneBox.Text = '') then Exit;
+    (SPortEdit.Text = '') or (HPortEdit.Text = '') or (BypassBox.Text = '') then Exit;
 
   //Не запускать ДО создания конфига Клиента и Сервера
   if not FileExists(GetUserDir + '.config/naivegui/client.json') then Exit;
