@@ -2,4 +2,8 @@
 
 # УКАЖИ ТВОЙ СУБДОМЕН (т.е. без duckdns.org) и ТОКЕН
 
-/usr/bin/curl -s "https://www.duckdns.org/update?domains=ТВОЙ_ДОМЕН&token=ТВОЙ_ТОКЕН&ip="
+SUBDOMAIN="ТВОЙ_СУБДОМЕН"
+TOKEN="ТВОЙ_ТОКЕН"
+
+# Обновление DuckDNS
+/usr/bin/curl -s "https://www.duckdns.org/update?domains=$SUBDOMAIN&token=$TOKEN&ip=" > /var/log/duckdns.log 2>&1
