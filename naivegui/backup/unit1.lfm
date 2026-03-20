@@ -325,10 +325,13 @@ object MainForm: TMainForm
   object Label10: TLabel
     AnchorSideTop.Control = Label11
     AnchorSideTop.Side = asrCenter
-    Left = 184
+    AnchorSideRight.Control = URIEdit
+    Left = 192
     Height = 17
     Top = 179
     Width = 21
+    Anchors = [akTop, akRight]
+    BorderSpacing.Right = 3
     Caption = 'URI'
   end
   object URIEdit: TEdit

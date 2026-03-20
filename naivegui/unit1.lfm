@@ -58,12 +58,15 @@ object MainForm: TMainForm
     Caption = 'Password'
   end
   object PasswordEdit: TEdit
+    AnchorSideLeft.Control = Label4
+    AnchorSideLeft.Side = asrBottom
     AnchorSideTop.Control = Label3
     AnchorSideTop.Side = asrCenter
-    Left = 296
+    Left = 293
     Height = 37
     Top = 109
     Width = 168
+    BorderSpacing.Left = 3
     TabOrder = 4
   end
   object StartBtn: TSpeedButton
