@@ -2,10 +2,10 @@ object MainForm: TMainForm
   Left = 299
   Height = 639
   Top = 127
-  Width = 813
+  Width = 828
   Caption = 'NaiveGUI'
   ClientHeight = 639
-  ClientWidth = 813
+  ClientWidth = 828
   SessionProperties = 'Height;Left;Top;Width;SaveDialog1.InitialDir'
   LCLVersion = '4.4.0.0'
   OnCreate = FormCreate
@@ -75,15 +75,16 @@ object MainForm: TMainForm
     TabOrder = 3
   end
   object StartBtn: TSpeedButton
+    AnchorSideLeft.Control = CreateBtn
     AnchorSideTop.Control = BypassBox
     AnchorSideRight.Control = StopBtn
     AnchorSideBottom.Control = BypassBox
     AnchorSideBottom.Side = asrBottom
-    Left = 567
+    Left = 578
     Height = 37
     Top = 169
-    Width = 123
-    Anchors = [akTop, akRight, akBottom]
+    Width = 134
+    Anchors = [akTop, akLeft, akRight, akBottom]
     BorderSpacing.Right = 8
     Caption = 'Start'
     OnClick = StartBtnClick
@@ -94,10 +95,10 @@ object MainForm: TMainForm
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = StartBtn
     AnchorSideBottom.Side = asrBottom
-    Left = 698
+    Left = 720
     Height = 37
     Top = 169
-    Width = 107
+    Width = 100
     Anchors = [akTop, akRight, akBottom]
     BorderSpacing.Right = 8
     Caption = 'Stop'
@@ -125,10 +126,10 @@ object MainForm: TMainForm
     Font.Style = [fsBold]
     ParentFont = False
   end
-  object SpeedButton3: TSpeedButton
+  object CreateBtn: TSpeedButton
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
-    Left = 563
+    Left = 578
     Height = 60
     Top = 8
     Width = 242
@@ -267,13 +268,13 @@ object MainForm: TMainForm
       FEDD40D5FF180000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000
     }
-    OnClick = SpeedButton3Click
+    OnClick = CreateBtnClick
   end
   object Label7: TLabel
     AnchorSideTop.Control = Label3
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = SPortEdit
-    Left = 517
+    Left = 527
     Height = 17
     Top = 119
     Width = 48
@@ -285,7 +286,7 @@ object MainForm: TMainForm
     AnchorSideTop.Control = Label3
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = HPortEdit
-    Left = 680
+    Left = 695
     Height = 17
     Top = 119
     Width = 34
@@ -294,13 +295,13 @@ object MainForm: TMainForm
     Caption = 'HTTP'
   end
   object SPortEdit: TEdit
+    AnchorSideLeft.Control = CreateBtn
     AnchorSideTop.Control = Label3
     AnchorSideTop.Side = asrCenter
-    Left = 568
+    Left = 578
     Height = 37
     Top = 109
     Width = 80
-    Anchors = [akTop]
     TabOrder = 4
     Text = '1080'
   end
@@ -309,7 +310,7 @@ object MainForm: TMainForm
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
-    Left = 717
+    Left = 732
     Height = 37
     Top = 109
     Width = 88
@@ -320,7 +321,7 @@ object MainForm: TMainForm
   end
   object Label9: TLabel
     AnchorSideLeft.Control = Label7
-    Left = 517
+    Left = 527
     Height = 17
     Top = 88
     Width = 86
@@ -334,7 +335,7 @@ object MainForm: TMainForm
     AnchorSideTop.Control = StartBtn
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = StartBtn
-    Left = 553
+    Left = 564
     Height = 12
     Top = 181
     Width = 11
@@ -354,7 +355,7 @@ object MainForm: TMainForm
     Left = 0
     Height = 20
     Top = 619
-    Width = 813
+    Width = 828
     Anchors = [akLeft, akRight, akBottom]
     Caption = 'License: GPLv3   Author: alex_q_2000 (C) 2026   https://github.com/AKotov-dev/NaiveGUI'
     Font.Color = clGray
@@ -410,7 +411,7 @@ object MainForm: TMainForm
     Left = 0
     Height = 398
     Top = 221
-    Width = 813
+    Width = 828
     Anchors = [akTop, akLeft, akRight, akBottom]
     BorderSpacing.Top = 15
     Font.Height = -13

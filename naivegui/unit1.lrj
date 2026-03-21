@@ -8,7 +8,7 @@
 {"hash":371552,"name":"tmainform.stopbtn.caption","sourcebytes":[83,116,111,112],"value":"Stop"},
 {"hash":164219914,"name":"tmainform.label5.caption","sourcebytes":[83,101,114,118,101,114,58],"value":"Server:"},
 {"hash":170902842,"name":"tmainform.label6.caption","sourcebytes":[67,108,105,101,110,116,58],"value":"Client:"},
-{"hash":51933058,"name":"tmainform.speedbutton3.caption","sourcebytes":[67,114,101,97,116,101,32,67,108,105,101,110,116,32,97,110,100,32,83,101,114,118,101,114],"value":"Create Client and Server"},
+{"hash":51933058,"name":"tmainform.createbtn.caption","sourcebytes":[67,114,101,97,116,101,32,67,108,105,101,110,116,32,97,110,100,32,83,101,114,118,101,114],"value":"Create Client and Server"},
 {"hash":92504165,"name":"tmainform.label7.caption","sourcebytes":[83,79,67,75,83,53],"value":"SOCKS5"},
 {"hash":317840,"name":"tmainform.label8.caption","sourcebytes":[72,84,84,80],"value":"HTTP"},
 {"hash":213936,"name":"tmainform.sportedit.text","sourcebytes":[49,48,56,48],"value":"1080"},

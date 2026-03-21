@@ -20,6 +20,12 @@ msgstr ""
 msgid "NaiveGUI"
 msgstr ""
 
+#: tmainform.createbtn.caption
+#, fuzzy
+msgctxt "tmainform.createbtn.caption"
+msgid "Create Client and Server"
+msgstr "Создать Клиент и Сервер"
+
 #: tmainform.domainedit.hint
 msgid "Your domain without \"https://\""
 msgstr "Ваш домен без \"https://\""
@@ -96,10 +102,6 @@ msgstr ""
 msgid "QUIC may be blocked in Russia"
 msgstr "QUIC может быть заблокирован в России"
 
-#: tmainform.speedbutton3.caption
-msgid "Create Client and Server"
-msgstr "Создать Клиент и Сервер"
-
 #: tmainform.sportedit.text
 msgid "1080"
 msgstr ""
@@ -115,3 +117,4 @@ msgstr "Лицензия: GPLv3   Автор: alex_q_2000 (C) 2026   https://git
 #: tmainform.stopbtn.caption
 msgid "Stop"
 msgstr "Стоп"
+

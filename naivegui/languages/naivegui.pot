@@ -10,6 +10,11 @@ msgstr ""
 msgid "NaiveGUI"
 msgstr ""
 
+#: tmainform.createbtn.caption
+msgctxt "tmainform.createbtn.caption"
+msgid "Create Client and Server"
+msgstr ""
+
 #: tmainform.domainedit.hint
 msgid "Your domain without \"https://\""
 msgstr ""
@@ -82,10 +87,6 @@ msgstr ""
 
 #: tmainform.quicbox.hint
 msgid "QUIC may be blocked in Russia"
-msgstr ""
-
-#: tmainform.speedbutton3.caption
-msgid "Create Client and Server"
 msgstr ""
 
 #: tmainform.sportedit.text
