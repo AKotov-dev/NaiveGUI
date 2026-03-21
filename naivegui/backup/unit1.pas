@@ -40,7 +40,7 @@ type
     Label6: TLabel;
     StartBtn: TSpeedButton;
     StopBtn: TSpeedButton;
-    SpeedButton3: TSpeedButton;
+    CreateBtn: TSpeedButton;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure Label10Click(Sender: TObject);
@@ -50,7 +50,7 @@ type
     procedure Label2MouseEnter(Sender: TObject);
     procedure Label2MouseLeave(Sender: TObject);
     procedure PassBtnClick(Sender: TObject);
-    procedure SpeedButton3Click(Sender: TObject);
+    procedure CreateBtnClick(Sender: TObject);
     procedure StartBtnClick(Sender: TObject);
     procedure StopBtnClick(Sender: TObject);
     procedure CreateClientConfig;
@@ -386,7 +386,7 @@ begin
 end;
 
 //Создаём конфиги Клиента и Сервера
-procedure TMainForm.SpeedButton3Click(Sender: TObject);
+procedure TMainForm.CreateBtnClick(Sender: TObject);
 begin
   //Не запускать, если поля пустые
   if (DomainEdit.Text = '') or (UserEdit.Text = '') or (PasswordEdit.Text = '') or

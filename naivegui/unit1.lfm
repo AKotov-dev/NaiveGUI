@@ -417,6 +417,7 @@ object MainForm: TMainForm
     Font.Height = -13
     Font.Name = 'Liberation Mono'
     ParentFont = False
+    ReadOnly = True
     ScrollBars = ssVertical
     TabOrder = 7
     WantReturns = False
