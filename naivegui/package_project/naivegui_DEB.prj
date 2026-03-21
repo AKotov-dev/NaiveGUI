@@ -45,10 +45,11 @@ deb=1
 [FILES]
 0=/usr/bin/naivegui
 1=/usr/share/icons/naivegui.png
-2=/usr/share/applications/naivegui.desktop
-3=/opt/naivegui/
-4=/usr/share/naivegui/
-5=/usr/share/doc/naivegui/
+2=/etc/systemd/user/naivegui.service
+3=/usr/share/applications/naivegui.desktop
+4=/opt/naivegui/
+5=/usr/share/naivegui/
+6=/usr/share/doc/naivegui/
 
 [AFTERINSTALL]
 0=#!/bin/bash

@@ -5,7 +5,7 @@ name=naivegui
 version=0.1
 
 [RELEASE]
-release=0.mrx9
+release=0.mrx10
 
 [GROUP]
 group=Accessibility
@@ -31,7 +31,7 @@ urlcopy=https://github.com/AKotov-dev/NaiveGUI
 license=GPLv3
 
 [DEPS]
-deps=gtk2 systemd lib64proxy-gnome lib64proxy-kde
+deps=gtk2 systemd lib64proxy-gnome
 
 [META]
 meta=0
