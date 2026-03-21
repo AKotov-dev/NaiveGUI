@@ -703,4 +703,11 @@ object MainForm: TMainForm
     Left = 73
     Top = 240
   end
+  object SaveDialog1: TSaveDialog
+    FileName = 'naivegui_config.tar.gz'
+    Filter = 'Archive (*.tar.gz)|*.tar.gz'
+    Options = [ofOverwritePrompt, ofEnableSizing, ofViewDetail]
+    Left = 192
+    Top = 240
+  end
 end

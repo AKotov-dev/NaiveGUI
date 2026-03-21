@@ -687,8 +687,8 @@ object MainForm: TMainForm
     Height = 17
     Hint = 'https://www.speedtest.net'
     Top = 179
-    Width = 83
-    Caption = 'Speed ​​check...'
+    Width = 174
+    Caption = 'Checking connection speed...'
     Font.Color = clBlue
     Font.Style = [fsUnderline]
     ParentFont = False
@@ -701,6 +701,12 @@ object MainForm: TMainForm
   object IniPropStorage1: TIniPropStorage
     StoredValues = <>
     Left = 73
+    Top = 240
+  end
+  object SaveDialog1: TSaveDialog
+    Filter = 'Archive (*.tar.gz)|*.tar.gz'
+    Options = [ofOverwritePrompt, ofEnableSizing, ofViewDetail]
+    Left = 192
     Top = 240
   end
 end

@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, Buttons,
-  ExtCtrls, DefaultTranslator, IniPropStorage, LCLIntf, Process;
+  ExtCtrls, DefaultTranslator, IniPropStorage, LCLIntf, StrUtils, FileUtil, Process;
 
 type
 
@@ -21,6 +21,7 @@ type
     BypassBox: TComboBox;
     DomainEdit: TEdit;
     PassBtn: TSpeedButton;
+    SaveDialog1: TSaveDialog;
     SPortEdit: TEdit;
     HPortEdit: TEdit;
     Label11: TLabel;
@@ -55,6 +56,7 @@ type
     procedure CreateClientConfig;
     procedure CreateServerConfig;
     procedure CreateSWProxy;
+    procedure StartProcess(command: string);
 
   private
 
@@ -73,6 +75,22 @@ uses start_trd, service_state_trd, JsonArrayHelper;
 
   { TMainForm }
 
+//Общая процедура запуска команд (асинхронная)
+procedure TMainForm.StartProcess(command: string);
+var
+  ExProcess: TProcess;
+begin
+  ExProcess := TProcess.Create(nil);
+  try
+    ExProcess.Executable := '/bin/bash';
+    ExProcess.Parameters.Add('-c');
+    ExProcess.Parameters.Add(command);
+    ExProcess.Options := ExProcess.Options + [poWaitOnExit];
+    ExProcess.Execute;
+  finally
+    ExProcess.Free;
+  end;
+end;
 
 //Create ~/config/naivegui/swproxy.sh
 procedure TMainForm.CreateSWProxy;
@@ -362,8 +380,9 @@ end;
 procedure TMainForm.PassBtnClick(Sender: TObject);
 begin
   if PasswordEdit.PasswordChar = Chr(0) then
-  PasswordEdit.PasswordChar:=#1 else
-   PasswordEdit.PasswordChar:= Chr(0);
+    PasswordEdit.PasswordChar := #1
+  else
+    PasswordEdit.PasswordChar := Chr(0);
 end;
 
 //Создаём конфиги Клиента и Сервера
@@ -373,6 +392,25 @@ begin
   CreateClientConfig;
   //Сервер
   CreateServerConfig;
+
+  //Выгружаем архив конфигураций Клиента и Сервера
+  if SaveDialog1.Execute then
+  begin
+    if not AnsiEndsText('.tar.gz', SaveDialog1.FileName) then
+    begin
+      if SameText(ExtractFileExt(SaveDialog1.FileName), '.gz') then
+        SaveDialog1.FileName := ChangeFileExt(SaveDialog1.FileName, '.tar.gz')
+      else
+        SaveDialog1.FileName := SaveDialog1.FileName + '.tar.gz';
+    end;
+
+    //Создаём архив и выгружаем
+    StartProcess(
+      'cd ~/.config/naivegui; chmod 644 Caddyfile; tar -zcf naivegui_config.tar.gz Caddyfile client.json');
+
+    CopyFile(GetUserDir + '.config/naivegui/naivegui_config.tar.gz',
+      SaveDialog1.FileName, [cffOverwriteFile]);
+  end;
 end;
 
 //Start + Enable
