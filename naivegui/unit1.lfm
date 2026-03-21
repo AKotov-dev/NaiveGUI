@@ -574,7 +574,7 @@ object MainForm: TMainForm
     Cursor = crHandPoint
     Left = 293
     Height = 17
-    Hint = 'The "caddy-forwardproxy-naive" package'#10'must be installed on the server'
+    Hint = 'The server must have the "caddy-forwardproxy-naive"'#10'package installed and the "caddy" service running'
     Top = 40
     Width = 102
     BorderSpacing.Left = 3
