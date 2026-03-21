@@ -15,10 +15,12 @@ type
   TMainForm = class(TForm)
     Image1: TImage;
     IniPropStorage1: TIniPropStorage;
+    Label10: TLabel;
     Label2: TLabel;
     QUICBox: TCheckBox;
     BypassBox: TComboBox;
     DomainEdit: TEdit;
+    PassBtn: TSpeedButton;
     SPortEdit: TEdit;
     HPortEdit: TEdit;
     Label11: TLabel;
@@ -40,9 +42,13 @@ type
     SpeedButton3: TSpeedButton;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure Label10Click(Sender: TObject);
+    procedure Label10MouseEnter(Sender: TObject);
+    procedure Label10MouseLeave(Sender: TObject);
     procedure Label2Click(Sender: TObject);
     procedure Label2MouseEnter(Sender: TObject);
     procedure Label2MouseLeave(Sender: TObject);
+    procedure PassBtnClick(Sender: TObject);
     procedure SpeedButton3Click(Sender: TObject);
     procedure StartBtnClick(Sender: TObject);
     procedure StopBtnClick(Sender: TObject);
@@ -299,6 +305,9 @@ begin
   IniPropStorage1.Restore;
 
   client_conf := GetUserDir + '.config/naivegui/client.json';
+
+  PassBtn.Width := PasswordEdit.Height;
+
   if not FileExists(client_conf) then Exit;
 
   //Читаем параметры клиента
@@ -318,6 +327,21 @@ begin
   BypassBox.Text := JsonReadString(client_conf, 'dns.rules[0].domain_suffix[0]');
 end;
 
+procedure TMainForm.Label10Click(Sender: TObject);
+begin
+  OpenURL('https://www.speedtest.net/');
+end;
+
+procedure TMainForm.Label10MouseEnter(Sender: TObject);
+begin
+  Label10.Font.Color := clRed;  //подсветка при наведении
+end;
+
+procedure TMainForm.Label10MouseLeave(Sender: TObject);
+begin
+  Label10.Font.Color := clBlue;  //подсветка при наведении
+end;
+
 //Проверка страницы
 procedure TMainForm.Label2Click(Sender: TObject);
 begin
@@ -332,6 +356,14 @@ end;
 procedure TMainForm.Label2MouseLeave(Sender: TObject);
 begin
   Label2.Font.Color := clBlue;  //подсветка при наведении
+end;
+
+//Показать/скрыть пароль
+procedure TMainForm.PassBtnClick(Sender: TObject);
+begin
+  if PasswordEdit.PasswordChar = Chr(0) then
+  PasswordEdit.PasswordChar:=#1 else
+   PasswordEdit.PasswordChar:= Chr(0);
 end;
 
 //Создаём конфиги Клиента и Сервера

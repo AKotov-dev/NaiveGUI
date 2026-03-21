@@ -32,6 +32,14 @@ msgstr ""
 msgid "Domain"
 msgstr "Домен"
 
+#: tmainform.label10.caption
+msgid "Checking connection speed..."
+msgstr "Проверка скорости подключения..."
+
+#: tmainform.label10.hint
+msgid "https://www.speedtest.net"
+msgstr ""
+
 #: tmainform.label11.caption
 msgid "Bypass"
 msgstr "Байпас"
@@ -75,6 +83,10 @@ msgstr ""
 #: tmainform.label9.caption
 msgid "Local ports:"
 msgstr "Локальные порты:"
+
+#: tmainform.passbtn.hint
+msgid "Show password"
+msgstr "Показать пароль"
 
 #: tmainform.quicbox.caption
 msgid "QUIC"

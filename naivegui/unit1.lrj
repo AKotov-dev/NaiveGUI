@@ -20,5 +20,8 @@
 {"hash":70114209,"name":"tmainform.quicbox.hint","sourcebytes":[81,85,73,67,32,109,97,121,32,98,101,32,98,108,111,99,107,101,100,32,105,110,32,82,117,115,115,105,97],"value":"QUIC may be blocked in Russia"},
 {"hash":354771,"name":"tmainform.quicbox.caption","sourcebytes":[81,85,73,67],"value":"QUIC"},
 {"hash":185899730,"name":"tmainform.label2.hint","sourcebytes":[84,104,101,32,34,99,97,100,100,121,45,102,111,114,119,97,114,100,112,114,111,120,121,45,110,97,105,118,101,34,32,112,97,99,107,97,103,101,10,109,117,115,116,32,98,101,32,105,110,115,116,97,108,108,101,100,32,111,110,32,116,104,101,32,115,101,114,118,101,114],"value":"The \"caddy-forwardproxy-naive\" package\nmust be installed on the server"},
-{"hash":189697518,"name":"tmainform.label2.caption","sourcebytes":[67,104,101,99,107,32,116,104,101,32,112,97,103,101,46,46,46],"value":"Check the page..."}
+{"hash":189697518,"name":"tmainform.label2.caption","sourcebytes":[67,104,101,99,107,32,116,104,101,32,112,97,103,101,46,46,46],"value":"Check the page..."},
+{"hash":22827444,"name":"tmainform.passbtn.hint","sourcebytes":[83,104,111,119,32,112,97,115,115,119,111,114,100],"value":"Show password"},
+{"hash":152661892,"name":"tmainform.label10.hint","sourcebytes":[104,116,116,112,115,58,47,47,119,119,119,46,115,112,101,101,100,116,101,115,116,46,110,101,116],"value":"https://www.speedtest.net"},
+{"hash":134679774,"name":"tmainform.label10.caption","sourcebytes":[67,104,101,99,107,105,110,103,32,99,111,110,110,101,99,116,105,111,110,32,115,112,101,101,100,46,46,46],"value":"Checking connection speed..."}
 ]}
