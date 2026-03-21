@@ -105,3 +105,11 @@ msgstr ""
 msgid "Stop"
 msgstr ""
 
+#: unit1.sconfigutarionfound
+msgid "The configuration has already been created! Overwrite?"
+msgstr ""
+
+#: unit1.snoconfiguration
+msgid "To run, you need to create a configuration!"
+msgstr ""
+

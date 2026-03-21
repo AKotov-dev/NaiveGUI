@@ -427,7 +427,7 @@ object MainForm: TMainForm
     AnchorSideTop.Side = asrCenter
     Left = 184
     Height = 32
-    Hint = 'QUIC may be blocked in Russia'
+    Hint = 'The protocol may be blocked in Russia'
     Top = 171
     Width = 66
     Caption = 'QUIC'

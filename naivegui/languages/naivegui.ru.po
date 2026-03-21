@@ -116,3 +116,11 @@ msgstr "Лицензия: GPLv3   Автор: alex_q_2000 (C) 2026   https://git
 #: tmainform.stopbtn.caption
 msgid "Stop"
 msgstr "Стоп"
+
+#: unit1.sconfigutarionfound
+msgid "The configuration has already been created! Overwrite?"
+msgstr "Конфигурация уже создавалась! Перезаписать?"
+
+#: unit1.snoconfiguration
+msgid "To run, you need to create a configuration!"
+msgstr "Для запуска нужно создать конфигурацию!"

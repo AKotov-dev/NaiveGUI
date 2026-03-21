@@ -67,6 +67,10 @@ type
 var
   MainForm: TMainForm;
 
+resourcestring
+  SNoConfiguration = 'To run, you need to create a configuration!';
+  SConfigutarionFound = 'The configuration has already been created! Overwrite?';
+
 implementation
 
 uses start_trd, service_state_trd, JsonArrayHelper;
@@ -392,6 +396,10 @@ begin
   if (DomainEdit.Text = '') or (UserEdit.Text = '') or (PasswordEdit.Text = '') or
     (SPortEdit.Text = '') or (HPortEdit.Text = '') or (BypassBox.Text = '') then Exit;
 
+  if FileExists(GetUserDir + '.config/naivegui/Caddyfile') then
+    if MessageDlg(SConfigutarionFound, mtConfirmation, [mbYes, mbNo], 0) <> mrYes then
+      Exit;
+
   //Клиент
   CreateClientConfig;
   //Сервер
@@ -427,7 +435,11 @@ begin
     (SPortEdit.Text = '') or (HPortEdit.Text = '') or (BypassBox.Text = '') then Exit;
 
   //Не запускать ДО создания конфига Клиента и Сервера
-  if not FileExists(GetUserDir + '.config/naivegui/client.json') then Exit;
+  if not FileExists(GetUserDir + '.config/naivegui/client.json') then
+  begin
+    MessageDlg(SNoConfiguration, mtWarning, [mbOK], 0);
+    Exit;
+  end;
 
   //Пересоздаём конфиг клиента
   CreateClientConfig;

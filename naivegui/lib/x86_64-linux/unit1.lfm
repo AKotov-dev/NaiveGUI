@@ -49,7 +49,7 @@ object MainForm: TMainForm
     Top = 109
     Width = 152
     BorderSpacing.Left = 3
-    TabOrder = 2
+    TabOrder = 1
   end
   object Label4: TLabel
     AnchorSideTop.Control = Label3
@@ -72,7 +72,7 @@ object MainForm: TMainForm
     BorderSpacing.Left = 3
     EchoMode = emPassword
     PasswordChar = #2
-    TabOrder = 3
+    TabOrder = 2
   end
   object StartBtn: TSpeedButton
     AnchorSideLeft.Control = CreateBtn
@@ -302,7 +302,7 @@ object MainForm: TMainForm
     Height = 37
     Top = 109
     Width = 80
-    TabOrder = 4
+    TabOrder = 3
     Text = '1080'
   end
   object HPortEdit: TEdit
@@ -316,7 +316,7 @@ object MainForm: TMainForm
     Width = 88
     Anchors = [akTop, akRight]
     BorderSpacing.Right = 8
-    TabOrder = 5
+    TabOrder = 4
     Text = '8889'
   end
   object Label9: TLabel
@@ -391,7 +391,7 @@ object MainForm: TMainForm
     )
     ParentFont = False
     Sorted = True
-    TabOrder = 6
+    TabOrder = 5
     Text = '.ru'
   end
   object Label11: TLabel
@@ -433,7 +433,7 @@ object MainForm: TMainForm
     Caption = 'QUIC'
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 1
+    TabOrder = 6
   end
   object Image1: TImage
     Left = 432
