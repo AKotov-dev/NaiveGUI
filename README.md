@@ -36,5 +36,8 @@ In some regions, QUIC may be blocked or unstable, so **HTTPS is usually the pref
   
 You can test the connection speed in each mode using the **"Check connection speed…"** link in NaiveGUI.
 
+### Note
+Supported DEs: Budgie, GNOME, Cinnamon, Plasma 5/6, MATE. To use the system proxy in LXDE and XFCE, install [XDE-Proxy-GUI](https://github.com/AKotov-dev/xde-proxy-gui).
+
 ### Useful links
 [naiveproxy](https://github.com/klzgrad/naiveproxy?tab=readme-ov-file), [forwardproxy](https://github.com/klzgrad/forwardproxy), [sing-box](https://github.com/SagerNet/sing-box)
