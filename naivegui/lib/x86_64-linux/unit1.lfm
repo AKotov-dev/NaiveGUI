@@ -681,10 +681,11 @@ object MainForm: TMainForm
     OnClick = PassBtnClick
   end
   object Label10: TLabel
+    AnchorSideLeft.Control = PasswordEdit
     AnchorSideTop.Control = Label11
     AnchorSideTop.Side = asrCenter
     Cursor = crHandPoint
-    Left = 280
+    Left = 277
     Height = 17
     Hint = 'https://www.speedtest.net'
     Top = 179
