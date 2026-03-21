@@ -2,10 +2,10 @@ object MainForm: TMainForm
   Left = 299
   Height = 627
   Top = 127
-  Width = 829
+  Width = 813
   Caption = 'NaiveGUI'
   ClientHeight = 627
-  ClientWidth = 829
+  ClientWidth = 813
   SessionProperties = 'Height;Width;Top;Left'
   LCLVersion = '4.4.0.0'
   OnCreate = FormCreate
@@ -79,7 +79,7 @@ object MainForm: TMainForm
     AnchorSideRight.Control = StopBtn
     AnchorSideBottom.Control = BypassBox
     AnchorSideBottom.Side = asrBottom
-    Left = 591
+    Left = 567
     Height = 37
     Top = 169
     Width = 123
@@ -94,10 +94,10 @@ object MainForm: TMainForm
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = StartBtn
     AnchorSideBottom.Side = asrBottom
-    Left = 722
+    Left = 698
     Height = 37
     Top = 169
-    Width = 99
+    Width = 107
     Anchors = [akTop, akRight, akBottom]
     BorderSpacing.Right = 8
     Caption = 'Stop'
@@ -128,10 +128,10 @@ object MainForm: TMainForm
   object SpeedButton3: TSpeedButton
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
-    Left = 591
+    Left = 563
     Height = 60
     Top = 8
-    Width = 230
+    Width = 242
     Anchors = [akTop, akRight]
     BorderSpacing.Right = 8
     Caption = 'Create Client and Server'
@@ -273,7 +273,7 @@ object MainForm: TMainForm
     AnchorSideTop.Control = Label3
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = SPortEdit
-    Left = 529
+    Left = 517
     Height = 17
     Top = 119
     Width = 48
@@ -285,7 +285,7 @@ object MainForm: TMainForm
     AnchorSideTop.Control = Label3
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = HPortEdit
-    Left = 696
+    Left = 680
     Height = 17
     Top = 119
     Width = 34
@@ -296,7 +296,7 @@ object MainForm: TMainForm
   object SPortEdit: TEdit
     AnchorSideTop.Control = Label3
     AnchorSideTop.Side = asrCenter
-    Left = 580
+    Left = 568
     Height = 37
     Top = 109
     Width = 80
@@ -309,7 +309,7 @@ object MainForm: TMainForm
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
-    Left = 733
+    Left = 717
     Height = 37
     Top = 109
     Width = 88
@@ -320,7 +320,7 @@ object MainForm: TMainForm
   end
   object Label9: TLabel
     AnchorSideLeft.Control = Label7
-    Left = 529
+    Left = 517
     Height = 17
     Top = 88
     Width = 86
@@ -334,7 +334,7 @@ object MainForm: TMainForm
     AnchorSideTop.Control = StartBtn
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = StartBtn
-    Left = 577
+    Left = 553
     Height = 12
     Top = 181
     Width = 11
@@ -354,7 +354,7 @@ object MainForm: TMainForm
     Left = 0
     Height = 20
     Top = 607
-    Width = 829
+    Width = 813
     Align = alBottom
     Caption = 'License: GPLv3   Author: alex_q_2000 (C) 2026   https://github.com/AKotov-dev/NaiveGUI'
     Font.Color = clGray
@@ -410,7 +410,7 @@ object MainForm: TMainForm
     Left = 0
     Height = 386
     Top = 221
-    Width = 829
+    Width = 813
     Align = alBottom
     Anchors = [akTop, akLeft, akRight, akBottom]
     BorderSpacing.Top = 15
@@ -435,9 +435,9 @@ object MainForm: TMainForm
     TabOrder = 1
   end
   object Image1: TImage
-    Left = 464
+    Left = 432
     Height = 64
-    Top = 152
+    Top = 8
     Width = 64
     AutoSize = True
     Picture.Data = {
@@ -704,6 +704,7 @@ object MainForm: TMainForm
     Top = 240
   end
   object SaveDialog1: TSaveDialog
+    FileName = 'naivegui_config.tar.gz'
     Filter = 'Archive (*.tar.gz)|*.tar.gz'
     Options = [ofOverwritePrompt, ofEnableSizing, ofViewDetail]
     Left = 192
