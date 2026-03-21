@@ -21,7 +21,6 @@ msgid "NaiveGUI"
 msgstr ""
 
 #: tmainform.createbtn.caption
-#, fuzzy
 msgctxt "tmainform.createbtn.caption"
 msgid "Create Client and Server"
 msgstr "Создать Клиент и Сервер"
@@ -99,8 +98,8 @@ msgid "QUIC"
 msgstr ""
 
 #: tmainform.quicbox.hint
-msgid "QUIC may be blocked in Russia"
-msgstr "QUIC может быть заблокирован в России"
+msgid "The protocol may be blocked in Russia"
+msgstr "Протокол может быть заблокирован в России"
 
 #: tmainform.sportedit.text
 msgid "1080"
@@ -117,4 +116,3 @@ msgstr "Лицензия: GPLv3   Автор: alex_q_2000 (C) 2026   https://git
 #: tmainform.stopbtn.caption
 msgid "Stop"
 msgstr "Стоп"
-

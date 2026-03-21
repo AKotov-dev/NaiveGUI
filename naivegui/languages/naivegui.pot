@@ -86,7 +86,7 @@ msgid "QUIC"
 msgstr ""
 
 #: tmainform.quicbox.hint
-msgid "QUIC may be blocked in Russia"
+msgid "The protocol may be blocked in Russia"
 msgstr ""
 
 #: tmainform.sportedit.text
