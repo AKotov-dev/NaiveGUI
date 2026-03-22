@@ -20,7 +20,7 @@ Save the generated archive containing:
 - **client.json** — client configuration
 - **Caddyfile** — server configuration
 4. Install the `caddy-forwardproxy-naive` package on your server.
-**Important:** this package includes `/etc/caddy` and provides a full web server. It is intended to be the only web server running on your VPS.
+**Important:** this package includes `/usr/bin/caddy` and provides a full web server. It is intended to be the only web server running on your VPS.
 5. Upload the `Caddyfile` to the server into `/etc/caddy` and start the service:
 ```
 systemctl restart caddy
