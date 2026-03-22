@@ -5,7 +5,7 @@ name=caddy-forwardproxy-naive
 version=2.10.0
 
 [RELEASE]
-release=0.mrx9
+release=1.mrx9
 
 [GROUP]
 group=Accessibility
@@ -45,8 +45,9 @@ deb=1
 [FILES]
 0=/usr/bin/caddy
 1=/var/www/html/index.html
-2=/etc/systemd/system/caddy.service
-3=/usr/share/doc/caddy-forwardproxy-naive/
+2=/var/www/html/favicon.ico
+3=/etc/systemd/system/caddy.service
+4=/usr/share/doc/caddy-forwardproxy-naive/
 
 [AFTERINSTALL]
 0=#!/bin/bash

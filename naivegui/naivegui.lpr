@@ -20,8 +20,8 @@ uses
 
 begin
   RequireDerivedFormResource := True;
-  Application.Title := 'NaiveGUI v0.1';
-  Application.Scaled := True;
+  Application.Title:='NaiveGUI v0.2';
+  Application.Scaled:=True;
   {$PUSH}
   {$WARN 5044 OFF}
   Application.MainFormOnTaskbar := True;
