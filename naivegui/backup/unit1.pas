@@ -22,6 +22,7 @@ type
     DomainEdit: TEdit;
     PassBtn: TSpeedButton;
     SaveDialog1: TSaveDialog;
+    QRBtn: TSpeedButton;
     SPortEdit: TEdit;
     HPortEdit: TEdit;
     Label11: TLabel;
@@ -51,6 +52,7 @@ type
     procedure Label2MouseLeave(Sender: TObject);
     procedure PassBtnClick(Sender: TObject);
     procedure CreateBtnClick(Sender: TObject);
+    procedure QRBtnClick(Sender: TObject);
     procedure StartBtnClick(Sender: TObject);
     procedure StopBtnClick(Sender: TObject);
     procedure CreateClientConfig;
@@ -73,7 +75,7 @@ resourcestring
 
 implementation
 
-uses start_trd, service_state_trd, JsonArrayHelper;
+uses start_trd, service_state_trd, JsonArrayHelper, Unit2;
 
   {$R *.lfm}
 
@@ -329,6 +331,7 @@ begin
   client_conf := GetUserDir + '.config/naivegui/client.json';
 
   PassBtn.Width := PasswordEdit.Height;
+  QRBtn.Width := CreateBtn.Height;
 
   if not FileExists(client_conf) then Exit;
 
@@ -423,6 +426,29 @@ begin
     CopyFile(GetUserDir + '.config/naivegui/naivegui_config.tar.gz',
       SaveDialog1.FileName, [cffOverwriteFile]);
   end;
+end;
+
+//Показать QR-код
+procedure TMainForm.QRBtnClick(Sender: TObject);
+var
+  protocol: string;
+begin
+  //Не запускать, если поля пустые
+  if (DomainEdit.Text = '') or (UserEdit.Text = '') or (PasswordEdit.Text = '') or
+    (SPortEdit.Text = '') or (HPortEdit.Text = '') or (BypassBox.Text = '') then Exit;
+
+  if not FileExists(GetUserDir + '.config/naivegui/client.json') then Exit;
+
+  //Определить протокол
+  if QUICBox.Checked then protocol := 'naive+quic://'
+  else
+    protocol := 'naive+https://';
+
+  QRForm.BarcodeQR1.Text := protocol + UserEdit.Text + ':' +
+    PasswordEdit.Text + '@' + DomainEdit.Text + '#NaiveGUI';
+
+  //Показать QR-код
+  QRForm.Show;
 end;
 
 //Start + Enable

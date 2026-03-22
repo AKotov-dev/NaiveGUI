@@ -7,6 +7,7 @@ msgid ".ru"
 msgstr ""
 
 #: tmainform.caption
+msgctxt "tmainform.caption"
 msgid "NaiveGUI"
 msgstr ""
 
@@ -81,6 +82,10 @@ msgstr ""
 msgid "Show password"
 msgstr ""
 
+#: tmainform.qrbtn.hint
+msgid "Show QR code"
+msgstr ""
+
 #: tmainform.quicbox.caption
 msgid "QUIC"
 msgstr ""
@@ -103,6 +108,15 @@ msgstr ""
 
 #: tmainform.stopbtn.caption
 msgid "Stop"
+msgstr ""
+
+#: tqrform.barcodeqr1.text
+msgctxt "tqrform.barcodeqr1.text"
+msgid "NaiveGUI"
+msgstr ""
+
+#: tqrform.caption
+msgid "QR code"
 msgstr ""
 
 #: unit1.sconfigutarionfound

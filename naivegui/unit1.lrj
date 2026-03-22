@@ -23,5 +23,6 @@
 {"hash":189697518,"name":"tmainform.label2.caption","sourcebytes":[67,104,101,99,107,32,116,104,101,32,112,97,103,101,46,46,46],"value":"Check the page..."},
 {"hash":22827444,"name":"tmainform.passbtn.hint","sourcebytes":[83,104,111,119,32,112,97,115,115,119,111,114,100],"value":"Show password"},
 {"hash":152661892,"name":"tmainform.label10.hint","sourcebytes":[104,116,116,112,115,58,47,47,119,119,119,46,115,112,101,101,100,116,101,115,116,46,110,101,116],"value":"https://www.speedtest.net"},
-{"hash":134679774,"name":"tmainform.label10.caption","sourcebytes":[67,104,101,99,107,105,110,103,32,99,111,110,110,101,99,116,105,111,110,32,115,112,101,101,100,46,46,46],"value":"Checking connection speed..."}
+{"hash":134679774,"name":"tmainform.label10.caption","sourcebytes":[67,104,101,99,107,105,110,103,32,99,111,110,110,101,99,116,105,111,110,32,115,112,101,101,100,46,46,46],"value":"Checking connection speed..."},
+{"hash":64621813,"name":"tmainform.qrbtn.hint","sourcebytes":[83,104,111,119,32,81,82,32,99,111,100,101],"value":"Show QR code"}
 ]}

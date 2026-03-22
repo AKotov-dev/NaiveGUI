@@ -17,6 +17,7 @@ msgid ".ru"
 msgstr ""
 
 #: tmainform.caption
+msgctxt "tmainform.caption"
 msgid "NaiveGUI"
 msgstr ""
 
@@ -93,6 +94,10 @@ msgstr "Локальные порты:"
 msgid "Show password"
 msgstr "Показать пароль"
 
+#: tmainform.qrbtn.hint
+msgid "Show QR code"
+msgstr "Показать QR-код"
+
 #: tmainform.quicbox.caption
 msgid "QUIC"
 msgstr ""
@@ -116,6 +121,15 @@ msgstr "Лицензия: GPLv3   Автор: alex_q_2000 (C) 2026   https://git
 #: tmainform.stopbtn.caption
 msgid "Stop"
 msgstr "Стоп"
+
+#: tqrform.barcodeqr1.text
+msgctxt "tqrform.barcodeqr1.text"
+msgid "NaiveGUI"
+msgstr ""
+
+#: tqrform.caption
+msgid "QR code"
+msgstr "QR-код"
 
 #: unit1.sconfigutarionfound
 msgid "The configuration has already been created! Overwrite?"

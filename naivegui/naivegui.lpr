@@ -14,7 +14,7 @@ uses
   Unit1,
   start_trd,
   service_state_trd,
-  JsonArrayHelper { you can add units after this };
+  JsonArrayHelper, Unit2 { you can add units after this };
 
   {$R *.res}
 
@@ -28,5 +28,6 @@ begin
   {$POP}
   Application.Initialize;
   Application.CreateForm(TMainForm, MainForm);
+  Application.CreateForm(TQRForm, QRForm);
   Application.Run;
 end.
