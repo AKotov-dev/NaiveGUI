@@ -10,7 +10,7 @@ Client/Server configuration GUI for NaiveProxy and Caddy.
 + Client: ~/.config/naivegui; Service: /etc/systemd/user/naivegui.service
 + Server: /etc/caddy; Service: /etc/systemd/system/caddy.service
 
-![](https://github.com/AKotov-dev/NaiveGUI/blob/main/Screenshot1.png)
+![](https://github.com/AKotov-dev/NaiveGUI/blob/main/Screenshot2.png)
 
 ## How It Works
 1. Rent a VPS located outside your country.
