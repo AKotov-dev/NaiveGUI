@@ -1,14 +1,15 @@
 object QRForm: TQRForm
-  Left = 425
+  Left = 491
   Height = 292
-  Top = 192
+  Top = 122
   Width = 302
-  Caption = 'QR-код'
+  Caption = 'QR code'
   ClientHeight = 292
   ClientWidth = 302
   FormStyle = fsStayOnTop
   Position = poMainFormCenter
   LCLVersion = '4.4.0.0'
+  OnShow = FormShow
   object BarcodeQR1: TBarcodeQR
     Left = 0
     Height = 292

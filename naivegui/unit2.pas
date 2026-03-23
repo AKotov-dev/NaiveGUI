@@ -13,6 +13,7 @@ type
 
   TQRForm = class(TForm)
     BarcodeQR1: TBarcodeQR;
+    procedure FormShow(Sender: TObject);
   private
 
   public
@@ -26,5 +27,12 @@ implementation
 
 {$R *.lfm}
 
-end.
+{ TQRForm }
 
+procedure TQRForm.FormShow(Sender: TObject);
+begin
+  //Квадрат
+  QRForm.Width := QRForm.Height;
+end;
+
+end.

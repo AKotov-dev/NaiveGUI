@@ -437,12 +437,12 @@ begin
   if (DomainEdit.Text = '') or (UserEdit.Text = '') or (PasswordEdit.Text = '') or
     (SPortEdit.Text = '') or (HPortEdit.Text = '') or (BypassBox.Text = '') then Exit;
 
-  if not FileExists(GetUserDir + '.config/naivegui/client.json') then Exit;
+ // if not FileExists(GetUserDir + '.config/naivegui/client.json') then Exit;
 
   //Определить протокол
   if QUICBox.Checked then protocol := 'naive+quic://'
   else
-    protocol := 'naive+https://';
+    protocol := 'https://';
 
   QRForm.BarcodeQR1.Text := protocol + UserEdit.Text + ':' +
     PasswordEdit.Text + '@' + DomainEdit.Text + '#NaiveGUI';

@@ -707,6 +707,7 @@ object MainForm: TMainForm
     AnchorSideBottom.Side = asrBottom
     Left = 514
     Height = 60
+    Hint = 'Show QR code'
     Top = 8
     Width = 60
     Anchors = [akTop, akRight, akBottom]
@@ -843,6 +844,8 @@ object MainForm: TMainForm
       0000000000000000000000000000000000000000000000000000000000800000
       00FF000000FF000000FF000000FF000000FF000000FF000000FF
     }
+    ShowHint = True
+    ParentShowHint = False
     OnClick = QRBtnClick
   end
   object IniPropStorage1: TIniPropStorage
