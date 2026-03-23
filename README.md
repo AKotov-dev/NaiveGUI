@@ -25,7 +25,7 @@ Save the generated archive containing:
 ```
 systemctl restart caddy
 ```
-6. In NaiveGUI, verify that your server is reachable over HTTPS using the **"Check page…"** link.
+6. In NaiveGUI, verify that your server is reachable over HTTPS using the **"Check the page…"** link.
 7. If the domain is accessible, click **"Start"** and verify your proxy [using this test](https://whoer.net/ru).
 ---
 ### Connection Modes
@@ -34,7 +34,7 @@ The client and server support two modes: **QUIC** and **HTTPS (TCP)**.
   
 In some regions, QUIC may be blocked or unstable, so **HTTPS is usually the preferred option**.  
   
-You can test the connection speed in each mode using the **"Check connection speed…"** link in NaiveGUI.
+You can test the connection speed in each mode using the **"Checking connection speed…"** link in NaiveGUI.
 
 ### Supported DEs
 Budgie, GNOME, Cinnamon, Plasma 5/6, MATE. To use the system proxy in LXDE and XFCE, install [XDE-Proxy-GUI](https://github.com/AKotov-dev/xde-proxy-gui).
