@@ -39,5 +39,8 @@ You can test the connection speed in each mode using the **"Check connection spe
 ### Supported DEs
 Budgie, GNOME, Cinnamon, Plasma 5/6, MATE. To use the system proxy in LXDE and XFCE, install [XDE-Proxy-GUI](https://github.com/AKotov-dev/xde-proxy-gui).
 
+### Smartphones and QR codes
+For Android smartphones, it is convenient to use [NekoBox](https://github.com/MatsuriDayo/NekoBoxForAndroid) + [naiveproxy-plugin](https://github.com/klzgrad/naiveproxy).
+
 ### Useful links
 [naiveproxy](https://github.com/klzgrad/naiveproxy?tab=readme-ov-file), [forwardproxy](https://github.com/klzgrad/forwardproxy), [sing-box](https://github.com/SagerNet/sing-box)
