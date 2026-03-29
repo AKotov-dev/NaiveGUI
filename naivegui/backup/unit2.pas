@@ -31,8 +31,8 @@ implementation
 
 procedure TQRForm.FormShow(Sender: TObject);
 begin
-  QRForm.Width:=QRForm.Height;
+  //Квадрат
+  QRForm.Width := QRForm.Height;
 end;
 
 end.
-

@@ -1,7 +1,7 @@
 object QRForm: TQRForm
-  Left = 491
+  Left = 500
   Height = 292
-  Top = 122
+  Top = 183
   Width = 302
   Caption = 'QR code'
   ClientHeight = 292
