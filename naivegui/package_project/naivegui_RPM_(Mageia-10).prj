@@ -2,7 +2,7 @@
 name=naivegui
 
 [VERSION]
-version=0.3
+version=0.4
 
 [RELEASE]
 release=0.mrx10
@@ -74,16 +74,21 @@ devtool=Lazarus
 toolversion=4.4
 
 [INFO]
-0=v0.3
-1=+ sing-box 1.13.4
-2=+ Cosmetic changes
-3=+ RPM (Mageia-9/10), DEB (Ubuntu)
+0=v0.4
+1=+ sing-box-1.13.5
+2=+ Improved service startup control
+3=+ Self-contained RPM & DEB packages
 4=
-5=v0,2
-6=+ Server: improved configuration
-7=+ Client: added QR code connection
+5=v0.3
+6=+ sing-box 1.13.4
+7=+ Cosmetic changes
 8=+ RPM (Mageia-9/10), DEB (Ubuntu)
 9=
-10=v0.1
-11=+ Initial Release
-12=+ RPM (Mageia-9) and Ubuntu packages
+10=v0,2
+11=+ Server: improved configuration
+12=+ Client: added QR code connection
+13=+ RPM (Mageia-9/10), DEB (Ubuntu)
+14=
+15=v0.1
+16=+ Initial Release
+17=+ RPM (Mageia-9) and Ubuntu packages
