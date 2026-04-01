@@ -293,7 +293,6 @@ end;
 procedure TMainForm.FormCreate(Sender: TObject);
 var
   bmp: TBitmap;
-  FShowLogTRD, FServiceStateTRD: TThread;
 begin
   MainForm.Caption := Application.Title;
 
@@ -311,14 +310,6 @@ begin
     ForceDirectories(GetUserDir + '.config/naivegui');
 
   IniPropStorage1.IniFileName := GetUserDir + '.config/naivegui/naivegui.conf';
-
-  //Запуск потока проверки состояния сервиса (active/inactive)
-  FServiceStateTRD := ServiceState.Create(False);
-  FServiceStateTRD.Priority := tpNormal;
-
-  //Запуск поток непрерывного чтения лога
-  FShowLogTRD := ShowLogTRD.Create(False);
-  FShowLogTRD.Priority := tpNormal;
 end;
 
 procedure TMainForm.FormShow(Sender: TObject);
@@ -332,6 +323,12 @@ begin
 
   PassBtn.Width := PasswordEdit.Height;
   QRBtn.Width := CreateBtn.Height;
+
+  //Запуск потока проверки состояния сервиса (active/inactive)
+  ServiceState.Create(False);
+
+  //Запуск поток непрерывного чтения лога
+  ShowLogTRD.Create(False);
 
   if not FileExists(client_conf) then Exit;
 
