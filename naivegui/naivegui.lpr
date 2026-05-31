@@ -14,14 +14,15 @@ uses
   Unit1,
   start_trd,
   service_state_trd,
-  JsonArrayHelper, Unit2 { you can add units after this };
+  JsonArrayHelper,
+  Unit2 { you can add units after this };
 
   {$R *.res}
 
 begin
   RequireDerivedFormResource := True;
-  Application.Title:='NaiveGUI v0.5';
-  Application.Scaled:=True;
+  Application.Title := 'NaiveGUI v0.5';
+  Application.Scaled := True;
   {$PUSH}
   {$WARN 5044 OFF}
   Application.MainFormOnTaskbar := True;

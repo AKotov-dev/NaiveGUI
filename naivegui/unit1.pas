@@ -441,13 +441,13 @@ procedure TMainForm.QRBtnClick(Sender: TObject);
 var
   protocol: string;
 begin
-  if QRForm.Visible then Exit;
+  if QRForm.Visible then QRForm.BringToFront;
 
   //Не запускать, если поля пустые
   if (DomainEdit.Text = '') or (SPortEdit.Text = '') or (HPortEdit.Text = '') or
     (BypassBox.Text = '') then Exit;
 
-  // if not FileExists(GetUserDir + '.config/naivegui/client.json') then Exit;
+  if not FileExists(GetUserDir + '.config/naivegui/client.json') then Exit;
 
   //Определить протокол
   if QUICBox.Checked then protocol := 'naive+quic://'

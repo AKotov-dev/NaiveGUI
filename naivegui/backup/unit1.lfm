@@ -1,7 +1,7 @@
 object MainForm: TMainForm
-  Left = 301
+  Left = 297
   Height = 628
-  Top = 128
+  Top = 126
   Width = 821
   Caption = 'NaiveGUI'
   ClientHeight = 628

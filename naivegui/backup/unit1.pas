@@ -97,7 +97,7 @@ end;
 //Генерация случайных USER_NAME и AUTH_PASS
 function GenerateString(ALength: integer): string;
 const
-  // Набор разрешенных символов без спецсимволов
+  //Набор разрешенных символов без спецсимволов
   Chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 var
   i: integer;
@@ -105,7 +105,7 @@ begin
   SetLength(Result, ALength);
   for i := 1 to ALength do
   begin
-    // Выбираем случайный символ из константы Chars
+    //Выбираем случайный символ из константы Chars
     Result[i] := Chars[Random(Length(Chars)) + 1];
   end;
 end;
@@ -441,13 +441,13 @@ procedure TMainForm.QRBtnClick(Sender: TObject);
 var
   protocol: string;
 begin
-  if QRForm.Visible then Exit;
+  if QRForm.Visible then QRForm.BringToFront;
 
   //Не запускать, если поля пустые
   if (DomainEdit.Text = '') or (SPortEdit.Text = '') or (HPortEdit.Text = '') or
     (BypassBox.Text = '') then Exit;
 
-  // if not FileExists(GetUserDir + '.config/naivegui/client.json') then Exit;
+  if not FileExists(GetUserDir + '.config/naivegui/client.json') then Exit;
 
   //Определить протокол
   if QUICBox.Checked then protocol := 'naive+quic://'
