@@ -65,11 +65,9 @@
       <Unit>
         <Filename Value="service_state_trd.pas"/>
         <IsPartOfProject Value="True"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="-1"/>
         <CursorPos X="25"/>
         <UsageCount Value="42"/>
-        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="JsonArrayHelper.pas"/>
@@ -85,9 +83,12 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Unit2"/>
-        <EditorIndex Value="-1"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="1"/>
         <CursorPos X="13"/>
         <UsageCount Value="29"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit>
     </Units>
     <JumpHistory HistoryIndex="29">

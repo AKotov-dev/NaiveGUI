@@ -16,6 +16,6 @@ object QRForm: TQRForm
     Align = alClient
     ParentColor = False
     Text = 'NaiveGUI'
-    Margin = 40
+    Margin = 10
   end
 end

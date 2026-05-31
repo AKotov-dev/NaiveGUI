@@ -6,6 +6,7 @@ object QRForm: TQRForm
   Caption = 'QR code'
   ClientHeight = 292
   ClientWidth = 295
+  FormStyle = fsStayOnTop
   LCLVersion = '4.4.0.0'
   OnShow = FormShow
   object BarcodeQR1: TBarcodeQR
