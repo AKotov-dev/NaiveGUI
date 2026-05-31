@@ -1,11 +1,11 @@
 object MainForm: TMainForm
-  Left = 295
-  Height = 639
-  Top = 129
-  Width = 826
+  Left = 301
+  Height = 628
+  Top = 128
+  Width = 821
   Caption = 'NaiveGUI'
-  ClientHeight = 639
-  ClientWidth = 826
+  ClientHeight = 628
+  ClientWidth = 821
   SessionProperties = 'Height;Left;Top;Width;SaveDialog1.InitialDir'
   LCLVersion = '4.4.0.0'
   OnCreate = FormCreate
@@ -26,67 +26,23 @@ object MainForm: TMainForm
     Height = 37
     Hint = 'Your domain without "https://"'
     Top = 30
-    Width = 232
+    Width = 296
     BorderSpacing.Left = 3
     ParentShowHint = False
     ShowHint = True
     TabOrder = 0
   end
-  object Label3: TLabel
-    Left = 8
-    Height = 17
-    Top = 119
-    Width = 27
-    Caption = 'User'
-  end
-  object UserEdit: TEdit
-    AnchorSideLeft.Control = Label3
-    AnchorSideLeft.Side = asrBottom
-    AnchorSideTop.Control = Label3
-    AnchorSideTop.Side = asrCenter
-    Left = 38
-    Height = 37
-    Top = 109
-    Width = 152
-    BorderSpacing.Left = 3
-    TabOrder = 1
-  end
-  object Label4: TLabel
-    AnchorSideTop.Control = Label3
-    AnchorSideTop.Side = asrCenter
-    Left = 216
-    Height = 17
-    Top = 119
-    Width = 58
-    Caption = 'Password'
-  end
-  object PasswordEdit: TEdit
-    AnchorSideLeft.Control = Label4
-    AnchorSideLeft.Side = asrBottom
-    AnchorSideTop.Control = Label3
-    AnchorSideTop.Side = asrCenter
-    Left = 277
-    Height = 37
-    Top = 109
-    Width = 174
-    BorderSpacing.Left = 3
-    EchoMode = emPassword
-    PasswordChar = #2
-    TabOrder = 2
-  end
   object StartBtn: TSpeedButton
     AnchorSideLeft.Control = CreateBtn
-    AnchorSideTop.Control = BypassBox
     AnchorSideRight.Control = StopBtn
-    AnchorSideBottom.Control = BypassBox
     AnchorSideBottom.Side = asrBottom
-    Left = 576
+    Left = 571
     Height = 37
-    Top = 169
+    Top = 152
     Width = 134
-    Anchors = [akTop, akLeft, akRight, akBottom]
+    Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Right = 8
-    Caption = 'Start'
+    Caption = 'Restart'
     OnClick = StartBtnClick
   end
   object StopBtn: TSpeedButton
@@ -95,9 +51,9 @@ object MainForm: TMainForm
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = StartBtn
     AnchorSideBottom.Side = asrBottom
-    Left = 718
+    Left = 713
     Height = 37
-    Top = 169
+    Top = 152
     Width = 100
     Anchors = [akTop, akRight, akBottom]
     BorderSpacing.Right = 8
@@ -108,8 +64,8 @@ object MainForm: TMainForm
     Left = 8
     Height = 17
     Top = 8
-    Width = 52
-    Caption = 'Server:'
+    Width = 72
+    Caption = 'Server ----'
     Font.Height = -13
     Font.Name = 'Sans'
     Font.Style = [fsBold]
@@ -118,9 +74,9 @@ object MainForm: TMainForm
   object Label6: TLabel
     Left = 8
     Height = 17
-    Top = 88
-    Width = 47
-    Caption = 'Client:'
+    Top = 80
+    Width = 107
+    Caption = 'Client ------------'
     Font.Height = -13
     Font.Name = 'Sans'
     Font.Style = [fsBold]
@@ -129,7 +85,7 @@ object MainForm: TMainForm
   object CreateBtn: TSpeedButton
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
-    Left = 576
+    Left = 571
     Height = 60
     Top = 8
     Width = 242
@@ -271,73 +227,58 @@ object MainForm: TMainForm
     OnClick = CreateBtnClick
   end
   object Label7: TLabel
-    AnchorSideTop.Control = Label3
-    AnchorSideTop.Side = asrCenter
-    AnchorSideRight.Control = SPortEdit
-    Left = 525
+    AnchorSideLeft.Control = Owner
+    Left = 8
     Height = 17
-    Top = 119
+    Top = 112
     Width = 48
-    Anchors = [akTop, akRight]
-    BorderSpacing.Right = 3
+    BorderSpacing.Left = 8
     Caption = 'SOCKS5'
   end
   object Label8: TLabel
-    AnchorSideTop.Control = Label3
+    AnchorSideTop.Control = Label7
     AnchorSideTop.Side = asrCenter
-    AnchorSideRight.Control = HPortEdit
-    Left = 693
+    Left = 182
     Height = 17
-    Top = 119
+    Top = 112
     Width = 34
-    Anchors = [akTop, akRight]
-    BorderSpacing.Right = 3
+    Anchors = [akTop]
     Caption = 'HTTP'
   end
   object SPortEdit: TEdit
-    AnchorSideLeft.Control = CreateBtn
-    AnchorSideTop.Control = Label3
+    AnchorSideLeft.Control = Label7
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = Label7
     AnchorSideTop.Side = asrCenter
-    Left = 576
+    Left = 59
     Height = 37
-    Top = 109
-    Width = 80
-    TabOrder = 3
+    Top = 102
+    Width = 100
+    BorderSpacing.Left = 3
+    TabOrder = 1
     Text = '1080'
   end
   object HPortEdit: TEdit
-    AnchorSideTop.Control = Label3
+    AnchorSideLeft.Control = Label8
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = SPortEdit
     AnchorSideTop.Side = asrCenter
-    AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
-    Left = 730
+    Left = 219
     Height = 37
-    Top = 109
-    Width = 88
-    Anchors = [akTop, akRight]
-    BorderSpacing.Right = 8
-    TabOrder = 4
+    Top = 102
+    Width = 100
+    BorderSpacing.Left = 3
+    TabOrder = 2
     Text = '8889'
-  end
-  object Label9: TLabel
-    AnchorSideLeft.Control = Label7
-    Left = 525
-    Height = 17
-    Top = 88
-    Width = 86
-    Caption = 'Local ports:'
-    Font.Height = -13
-    Font.Name = 'Sans'
-    Font.Style = [fsBold]
-    ParentFont = False
   end
   object Shape1: TShape
     AnchorSideTop.Control = StartBtn
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = StartBtn
-    Left = 562
+    Left = 557
     Height = 12
-    Top = 181
+    Top = 164
     Width = 11
     Anchors = [akTop, akRight]
     BorderSpacing.Left = 8
@@ -354,24 +295,24 @@ object MainForm: TMainForm
     AnchorSideBottom.Side = asrBottom
     Left = 0
     Height = 20
-    Top = 619
-    Width = 826
+    Top = 608
+    Width = 821
     Anchors = [akLeft, akRight, akBottom]
     Caption = 'License: GPLv3   Author: alex_q_2000 (C) 2026   https://github.com/AKotov-dev/NaiveGUI'
     Font.Color = clGray
     Font.Height = -11
     Font.Name = 'Sans'
     ParentFont = False
-    TabOrder = 8
+    TabOrder = 6
   end
   object BypassBox: TComboBox
     AnchorSideLeft.Control = Label11
     AnchorSideLeft.Side = asrBottom
-    AnchorSideTop.Control = Label11
+    AnchorSideTop.Control = SPortEdit
     AnchorSideTop.Side = asrCenter
-    Left = 52
+    Left = 394
     Height = 37
-    Top = 169
+    Top = 102
     Width = 100
     BorderSpacing.Left = 3
     Font.Height = -13
@@ -391,27 +332,30 @@ object MainForm: TMainForm
     )
     ParentFont = False
     Sorted = True
-    TabOrder = 5
+    TabOrder = 3
     Text = '.ru'
   end
   object Label11: TLabel
-    Left = 8
+    AnchorSideTop.Control = Label7
+    AnchorSideTop.Side = asrCenter
+    Left = 350
     Height = 17
-    Top = 179
+    Top = 112
     Width = 41
+    Anchors = [akTop]
     Caption = 'Bypass'
   end
   object LogMemo: TMemo
     AnchorSideLeft.Control = Owner
-    AnchorSideTop.Control = BypassBox
+    AnchorSideTop.Control = StartBtn
     AnchorSideTop.Side = asrBottom
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = StaticText1
     Left = 0
-    Height = 398
-    Top = 221
-    Width = 826
+    Height = 404
+    Top = 204
+    Width = 821
     Anchors = [akTop, akLeft, akRight, akBottom]
     BorderSpacing.Top = 15
     Font.Height = -12
@@ -419,26 +363,28 @@ object MainForm: TMainForm
     ParentFont = False
     ReadOnly = True
     ScrollBars = ssVertical
-    TabOrder = 7
+    TabOrder = 5
     WantReturns = False
   end
   object QUICBox: TCheckBox
-    AnchorSideTop.Control = Label11
+    AnchorSideLeft.Control = StartBtn
+    AnchorSideTop.Control = SPortEdit
     AnchorSideTop.Side = asrCenter
-    Left = 184
+    AnchorSideRight.Side = asrBottom
+    Left = 571
     Height = 32
     Hint = 'The protocol may be blocked in Russia'
-    Top = 171
+    Top = 104
     Width = 66
     Caption = 'QUIC'
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 6
+    TabOrder = 4
   end
   object Image1: TImage
-    Left = 416
+    Left = 749
     Height = 64
-    Top = 8
+    Top = 80
     Width = 64
     AutoSize = True
     Picture.Data = {
@@ -543,7 +489,7 @@ object MainForm: TMainForm
     AnchorSideTop.Control = DomainEdit
     AnchorSideTop.Side = asrCenter
     Cursor = crHandPoint
-    Left = 293
+    Left = 357
     Height = 17
     Hint = 'The server must have the "caddy-forwardproxy-naive"'#10'package installed and the "caddy" service running'
     Top = 40
@@ -559,108 +505,17 @@ object MainForm: TMainForm
     OnMouseEnter = Label2MouseEnter
     OnMouseLeave = Label2MouseLeave
   end
-  object PassBtn: TSpeedButton
-    AnchorSideLeft.Control = PasswordEdit
-    AnchorSideLeft.Side = asrBottom
-    AnchorSideTop.Control = PasswordEdit
-    AnchorSideBottom.Control = PasswordEdit
-    AnchorSideBottom.Side = asrBottom
-    Left = 451
-    Height = 37
-    Hint = 'Show password'
-    Top = 109
-    Width = 39
-    Anchors = [akTop, akLeft, akBottom]
-    Glyph.Data = {
-      36090000424D3609000000000000360000002800000018000000180000000100
-      2000000000000009000064000000640000000000000000000000000000000000
-      00000000000000000000000000000000000000000000ED9B371CF19D376BF19D
-      37B6F19D37D7F19D37F3F19D37F3F19D37D7F19C37B5F19C376AED9B371C0000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000F39E3D15F19D3791F19D37FBF19D37FFF19D
-      37FFF19D37FFF19D37FFF19D37FFF19D37FFF19D37FFF19D37FFF19D37FDF19D
-      37A2F59933190000000000000000000000000000000000000000000000000000
-      00000000000000000000F29D384EF19D37F2F19D37FFF19D37FFF19D37FFF19D
-      37FFF19D37FFF19D37FFF19D37FFF19D37FFF19D37FFF19D37FFF19D37FFF19D
-      37FFF19D37F1F29E364C00000000000000000000000000000000000000000000
-      000000000000F19E386EF19D37FDF19D37FFF19D37FFF19D37FFF19D37FFF19D
-      37FFF19D37FFF19D37FFF19D37FFF19D37FFF19D37FFF19D37FFF19D37FFF19D
-      37FFF19D37FFF19D37FDF19D386D000000000000000000000000000000000000
-      0000F19D3849F19D37FCF19D37FFF19D37FFF19D37FFF19D37FFF19D37FFF19D
-      37FFF19D37FFF19D37FFF19D37FFF19D37FFF19D37FFF19D37FFF19D37FFF19D
-      37FFF19D37FFF19D37FFF19D37FDF29C384D000000000000000000000000F6A1
-      391BF19D37F2F19D37FFF19D37FFF19D37FFF19D37FFF19D37FFF19D37FFF19D
-      37FFF19D37FFF19D37FFF19D37FFF19D37FFF19D37FFF19D37FFF19D37FFF19D
-      37FFF19D37FFF19D37FFF19D37FFF19D37F1F59933190000000000000000F09D
-      389CF19D37FFF19D37FFF19D37FFF19D37FFF19D37FFF19D37FFF2A13FFFF6BE
-      7AFFF9D3A6FFFADDBAFFFADDBAFFF9D3A5FFF5BC77FFF1A03DFFF19D37FFF19D
-      37FFF19D37FFF19D37FFF19D37FFF19D37FFF29E379800000000ED9E351DF19D
-      37FCF19D37FFF19D37FFF19D37FFF19D37FFF1A03DFFF8CD99FFFEF9F3FFFFFF
-      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEF7EFFFF7CA92FFF19F
-      3BFFF19D37FFF19D37FFF19D37FFF19D37FFF19D37FBED9B371CF19C366CF19D
-      37FFF19D37FFF19D37FFF19D37FFF2A74CFFFCEBD7FFFFFFFFFFFFFFFFFFFFFD
-      FCFFF9D3A6FFF5B66AFFF5B66BFFF9D4A6FFFFFDFCFFFFFFFFFFFFFFFFFFFCE8
-      D0FFF2A547FFF19D37FFF19D37FFF19D37FFF19D37FFF09E3869F19D36B7F19D
-      37FFF19D37FFF19D37FFF2A344FFFDEFDEFFFFFFFFFFFFFFFFFFFFFDFCFFF4B4
-      67FFF19D38FFF4B15FFFF4B05EFFF19D38FFF4B568FFFFFDFCFFFFFFFFFFFFFF
-      FFFFFCECD8FFF2A240FFF19D37FFF19D37FFF19D37FFF19C37B5F19D37D9F19D
-      37FFF19D37FFF19D37FFFADAB4FFFFFFFFFFFFFFFFFFFFFFFFFFF9D3A6FFF19D
-      38FFFADFBEFFFFFFFFFFFFFFFFFFFADFBDFFF19D38FFF9D4A6FFFFFFFFFFFFFF
-      FFFFFFFFFFFFF9D7AEFFF19D37FFF19D37FFF19D37FFF19D37D7F19D37F3F19D
-      37FFF19D37FFF3AE59FFFFFFFEFFFFFFFFFFFFFFFFFFFFFFFFFFF5B66AFFF4B1
-      5FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF4B15FFFF5B66BFFFFFFFFFFFFFF
-      FFFFFFFFFFFFFFFEFDFFF3AD57FFF19D37FFF19D37FFF19D37F1F19D37F3F19D
-      37FFF19D37FFF3AD58FFFFFEFDFFFFFFFFFFFFFFFFFFFFFFFFFFF5B669FFF4B1
-      60FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF4B15FFFF5B66BFFFFFFFFFFFFFF
-      FFFFFFFFFFFFFFFFFEFFF3AE59FFF19D37FFF19D37FFF19D37F3F19D37DBF19D
-      37FFF19D37FFF19D37FFFAD9B1FFFFFFFFFFFFFFFFFFFFFFFFFFF9D3A5FFF19D
-      38FFFADFBFFFFFFFFFFFFFFFFFFFFADFBEFFF19D38FFF9D3A6FFFFFFFFFFFFFF
-      FFFFFFFFFFFFFADAB4FFF19D37FFF19D37FFF19D37FFF19D37D8F19D36B7F19D
-      37FFF19D37FFF19D37FFF2A241FFFCEDDBFFFFFFFFFFFFFFFFFFFFFDFBFFF4B4
-      66FFF19D38FFF4B15FFFF4B15FFFF19D38FFF4B467FFFFFDFCFFFFFFFFFFFFFF
-      FFFFFDEEDDFFF2A344FFF19D37FFF19D37FFF19D37FFF19C37B5F19E386EF19D
-      37FFF19D37FFF19D37FFF19D37FFF2A649FFFCE9D2FFFFFFFFFFFFFFFFFFFFFD
-      FBFFF9D3A5FFF5B669FFF5B66AFFF9D3A6FFFFFDFCFFFFFFFFFFFFFFFFFFFCEB
-      D7FFF2A74BFFF19D37FFF19D37FFF19D37FFF19D37FFF19D376BEE99331EF19D
-      37FCF19D37FFF19D37FFF19D37FFF19D37FFF19F3CFFF8CB95FFFEF9F2FFFFFF
-      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEF9F3FFF8CD9AFFF1A0
-      3DFFF19D37FFF19D37FFF19D37FFF19D37FFF19D37FCED9B371C00000000F09D
-      379EF19D37FFF19D37FFF19D37FFF19D37FFF19D37FFF19D37FFF1A03EFFF6BD
-      79FFF9D3A6FFFADEBBFFFADEBBFFF9D4A6FFF6BE7AFFF2A140FFF19D37FFF19D
-      37FFF19D37FFF19D37FFF19D37FFF19D37FFF09C369B0000000000000000ED9B
-      371CF19D37F3F19D37FFF19D37FFF19D37FFF19D37FFF19D37FFF19D37FFF19D
-      37FFF19D37FFF19D37FFF19D37FFF19D37FFF19D37FFF19D37FFF19D37FFF19D
-      37FFF19D37FFF19D37FFF19D37FFF19D37F2F59D3B1A00000000000000000000
-      0000F29C3650F19D37FDF19D37FFF19D37FFF19D37FFF19D37FFF19D37FFF19D
-      37FFF19D37FFF19D37FFF19D37FFF19D37FFF19D37FFF19D37FFF19D37FFF19D
-      37FFF19D37FFF19D37FFF19D37FDF29D384E0000000000000000000000000000
-      000000000000F19C376FF19D37FDF19D37FFF19D37FFF19D37FFF19D37FFF19D
-      37FFF19D37FFF19D37FFF19D37FFF19D37FFF19D37FFF19D37FFF19D37FFF19D
-      37FFF19D37FFF19D37FDF19E386E000000000000000000000000000000000000
-      00000000000000000000F29C3650F19D37F3F19D37FFF19D37FFF19D37FFF19D
-      37FFF19D37FFF19D37FFF19D37FFF19D37FFF19D37FFF19D37FFF19D37FFF19D
-      37FFF19D37F2F29D384E00000000000000000000000000000000000000000000
-      0000000000000000000000000000F6A1391BF29D3799F19D37FCF19D37FFF19D
-      37FFF19D37FFF19D37FFF19D37FFF19D37FFF19D37FFF19D37FFF19D37FDF29E
-      38AAEF9F38200000000000000000000000000000000000000000000000000000
-      00000000000000000000000000000000000000000000EE99331EF19D386DF19D
-      37B8F19D37D8F19D37F4F19D37F4F19D37D8F19D37B8F19C366CED9E351D0000
-      0000000000000000000000000000000000000000000000000000
-    }
-    ShowHint = True
-    ParentShowHint = False
-    OnClick = PassBtnClick
-  end
   object Label10: TLabel
-    AnchorSideLeft.Control = PasswordEdit
-    AnchorSideTop.Control = Label11
     AnchorSideTop.Side = asrCenter
+    AnchorSideBottom.Control = StartBtn
+    AnchorSideBottom.Side = asrBottom
     Cursor = crHandPoint
-    Left = 277
+    Left = 8
     Height = 17
     Hint = 'https://www.speedtest.net'
-    Top = 179
+    Top = 172
     Width = 174
+    Anchors = [akLeft, akBottom]
     Caption = 'Checking connection speed...'
     Font.Color = clBlue
     Font.Style = [fsUnderline]
@@ -676,9 +531,9 @@ object MainForm: TMainForm
     AnchorSideRight.Control = CreateBtn
     AnchorSideBottom.Control = CreateBtn
     AnchorSideBottom.Side = asrBottom
-    Left = 514
+    Left = 509
     Height = 60
-    Hint = 'Show QR code'
+    Hint = 'Show QR code (NekoBox, Exclave)'
     Top = 8
     Width = 60
     Anchors = [akTop, akRight, akBottom]

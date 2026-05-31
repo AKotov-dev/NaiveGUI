@@ -68,17 +68,9 @@ begin
   with MainForm do
   begin
     if Trim(ResultStr.Text) = 'active' then
-    begin
-      Shape1.Brush.Color := clLime;
-      SPortEdit.Enabled := False;
-      HPortEdit.Enabled := False;
-    end
+      Shape1.Brush.Color := clLime
     else
-    begin
       Shape1.Brush.Color := clYellow;
-      SPortEdit.Enabled := True;
-      HPortEdit.Enabled := True;
-    end;
 
     Shape1.Repaint;
   end;

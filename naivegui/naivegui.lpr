@@ -20,7 +20,7 @@ uses
 
 begin
   RequireDerivedFormResource := True;
-  Application.Title:='NaiveGUI v0.4';
+  Application.Title:='NaiveGUI v0.5';
   Application.Scaled:=True;
   {$PUSH}
   {$WARN 5044 OFF}

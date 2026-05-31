@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.8\n"
 
 #: tmainform.bypassbox.text
 msgctxt "tmainform.bypassbox.text"
@@ -62,21 +62,13 @@ msgstr ""
 "На сервере должен быть установлен пакет\n"
 "\"caddy-forwardproxy-naive\" и запущен сервис \"caddy\""
 
-#: tmainform.label3.caption
-msgid "User"
-msgstr "Юзер"
-
-#: tmainform.label4.caption
-msgid "Password"
-msgstr "Пароль"
-
 #: tmainform.label5.caption
-msgid "Server:"
-msgstr "Сервер:"
+msgid "Server ----"
+msgstr "Сервер ----"
 
 #: tmainform.label6.caption
-msgid "Client:"
-msgstr "Клиент:"
+msgid "Client ------------"
+msgstr "Клиент ------------"
 
 #: tmainform.label7.caption
 msgid "SOCKS5"
@@ -86,17 +78,9 @@ msgstr ""
 msgid "HTTP"
 msgstr ""
 
-#: tmainform.label9.caption
-msgid "Local ports:"
-msgstr "Локальные порты:"
-
-#: tmainform.passbtn.hint
-msgid "Show password"
-msgstr "Показать пароль"
-
 #: tmainform.qrbtn.hint
-msgid "Show QR code"
-msgstr "Показать QR-код"
+msgid "Show QR code (NekoBox, Exclave)"
+msgstr "Показать QR-код (NekoBox, Exclave)"
 
 #: tmainform.quicbox.caption
 msgid "QUIC"
@@ -111,8 +95,8 @@ msgid "1080"
 msgstr ""
 
 #: tmainform.startbtn.caption
-msgid "Start"
-msgstr "Старт"
+msgid "Restart"
+msgstr "Рестарт"
 
 #: tmainform.statictext1.caption
 msgid "License: GPLv3   Author: alex_q_2000 (C) 2026   https://github.com/AKotov-dev/NaiveGUI"

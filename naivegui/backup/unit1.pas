@@ -20,7 +20,6 @@ type
     QUICBox: TCheckBox;
     BypassBox: TComboBox;
     DomainEdit: TEdit;
-    PassBtn: TSpeedButton;
     SaveDialog1: TSaveDialog;
     QRBtn: TSpeedButton;
     SPortEdit: TEdit;
@@ -31,12 +30,7 @@ type
     StaticText1: TStaticText;
     Label7: TLabel;
     Label8: TLabel;
-    Label9: TLabel;
-    UserEdit: TEdit;
-    PasswordEdit: TEdit;
     Label1: TLabel;
-    Label3: TLabel;
-    Label4: TLabel;
     Label5: TLabel;
     Label6: TLabel;
     StartBtn: TSpeedButton;
@@ -50,7 +44,6 @@ type
     procedure Label2Click(Sender: TObject);
     procedure Label2MouseEnter(Sender: TObject);
     procedure Label2MouseLeave(Sender: TObject);
-    procedure PassBtnClick(Sender: TObject);
     procedure CreateBtnClick(Sender: TObject);
     procedure QRBtnClick(Sender: TObject);
     procedure StartBtnClick(Sender: TObject);
@@ -77,6 +70,9 @@ implementation
 
 uses start_trd, service_state_trd, JsonArrayHelper, Unit2;
 
+var
+  USER_NAME, AUTH_PASS: string;
+
   {$R *.lfm}
 
   { TMainForm }
@@ -95,6 +91,22 @@ begin
     ExProcess.Execute;
   finally
     ExProcess.Free;
+  end;
+end;
+
+//Генерация случайных USER_NAME и AUTH_PASS
+function GenerateString(ALength: integer): string;
+const
+  // Набор разрешенных символов без спецсимволов
+  Chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+var
+  i: integer;
+begin
+  SetLength(Result, ALength);
+  for i := 1 to ALength do
+  begin
+    // Выбираем случайный символ из константы Chars
+    Result[i] := Chars[Random(Length(Chars)) + 1];
   end;
 end;
 
@@ -225,8 +237,8 @@ begin
     S.Add('      "tag": "proxy",');
     S.Add('      "server": "' + DomainEdit.Text + '",');
     S.Add('      "server_port": 443,');
-    S.Add('      "username": "' + UserEdit.Text + '",');
-    S.Add('      "password": "' + PasswordEdit.Text + '",');
+    S.Add('      "username": "' + USER_NAME + '",');
+    S.Add('      "password": "' + AUTH_PASS + '",');
     S.Add('      "tls": {');
     S.Add('        "enabled": true,');
     S.Add('        "server_name": "' + DomainEdit.Text + '"');
@@ -272,7 +284,7 @@ begin
     S.Add('');
     S.Add(':443, ' + DomainEdit.Text + ' {');
     S.Add('   forward_proxy {');
-    S.Add('                 basic_auth ' + UserEdit.Text + ' ' + PasswordEdit.Text);
+    S.Add('                 basic_auth ' + USER_NAME + ' ' + AUTH_PASS);
     S.Add('                 hide_ip');
     S.Add('                 hide_via');
     S.Add('                 probe_resistance');
@@ -295,6 +307,9 @@ var
   bmp: TBitmap;
 begin
   MainForm.Caption := Application.Title;
+
+  // Инициализация генератора случайных чисел для USER_NAME и AUTH_PASS
+  Randomize;
 
   // Устраняем баг иконки приложения
   bmp := TBitmap.Create;
@@ -321,8 +336,14 @@ begin
 
   client_conf := GetUserDir + '.config/naivegui/client.json';
 
-  PassBtn.Width := PasswordEdit.Height;
+  //PassBtn.Width := PasswordEdit.Height;
   QRBtn.Width := CreateBtn.Height;
+
+  //Запуск потока проверки состояния сервиса (active/inactive)
+  ServiceState.Create(False);
+
+  //Запуск поток непрерывного чтения лога
+  ShowLogTRD.Create(False);
 
   if not FileExists(client_conf) then Exit;
 
@@ -333,20 +354,15 @@ begin
     QUICBox.Checked := True;
 
   DomainEdit.Text := JsonReadString(client_conf, 'outbounds[0].server');
-  //  PortEdit.Text := JsonReadString(client_conf, 'outbounds[0].server_port');
-  UserEdit.Text := JsonReadString(client_conf, 'outbounds[0].username');
-  PasswordEdit.Text := JsonReadString(client_conf, 'outbounds[0].password');
+
+  //Юзер и пароль
+  USER_NAME := JsonReadString(client_conf, 'outbounds[0].username');
+  AUTH_PASS := JsonReadString(client_conf, 'outbounds[0].password');
 
   SPortEdit.Text := JsonReadString(client_conf, 'inbounds[0].listen_port');
   HPortEdit.Text := JsonReadString(client_conf, 'inbounds[1].listen_port');
 
   BypassBox.Text := JsonReadString(client_conf, 'dns.rules[0].domain_suffix[0]');
-
-  //Запуск потока проверки состояния сервиса (active/inactive)
-  ServiceState.Create(False);
-
-  //Запуск поток непрерывного чтения лога
-  ShowLogTRD.Create(False);
 end;
 
 procedure TMainForm.Label10Click(Sender: TObject);
@@ -380,25 +396,20 @@ begin
   Label2.Font.Color := clBlue;  //подсветка при наведении
 end;
 
-//Показать/скрыть пароль
-procedure TMainForm.PassBtnClick(Sender: TObject);
-begin
-  if PasswordEdit.PasswordChar = Chr(0) then
-    PasswordEdit.PasswordChar := #1
-  else
-    PasswordEdit.PasswordChar := Chr(0);
-end;
-
 //Создаём конфиги Клиента и Сервера
 procedure TMainForm.CreateBtnClick(Sender: TObject);
 begin
   //Не запускать, если поля пустые
-  if (DomainEdit.Text = '') or (UserEdit.Text = '') or (PasswordEdit.Text = '') or
-    (SPortEdit.Text = '') or (HPortEdit.Text = '') or (BypassBox.Text = '') then Exit;
+  if (DomainEdit.Text = '') or (SPortEdit.Text = '') or (HPortEdit.Text = '') or
+    (BypassBox.Text = '') then Exit;
 
   if FileExists(GetUserDir + '.config/naivegui/Caddyfile') then
     if MessageDlg(SConfigutarionFound, mtConfirmation, [mbYes, mbNo], 0) <> mrYes then
       Exit;
+
+  // Генерация случайных USER_NAME и AUTH_PASS
+  USER_NAME := GenerateString(10);
+  AUTH_PASS := GenerateString(16);
 
   //Клиент
   CreateClientConfig;
@@ -433,8 +444,8 @@ begin
   if QRForm.Visible then Exit;
 
   //Не запускать, если поля пустые
-  if (DomainEdit.Text = '') or (UserEdit.Text = '') or (PasswordEdit.Text = '') or
-    (SPortEdit.Text = '') or (HPortEdit.Text = '') or (BypassBox.Text = '') then Exit;
+  if (DomainEdit.Text = '') or (SPortEdit.Text = '') or (HPortEdit.Text = '') or
+    (BypassBox.Text = '') then Exit;
 
   // if not FileExists(GetUserDir + '.config/naivegui/client.json') then Exit;
 
@@ -443,8 +454,8 @@ begin
   else
     protocol := 'naive+https://';
 
-  QRForm.BarcodeQR1.Text := protocol + UserEdit.Text + ':' +
-    PasswordEdit.Text + '@' + DomainEdit.Text + '#NaiveGUI';
+  QRForm.BarcodeQR1.Text := protocol + USER_NAME + ':' + AUTH_PASS +
+    '@' + DomainEdit.Text + '#NaiveGUI';
 
   //Показать QR-код
   QRForm.Show;
@@ -456,8 +467,8 @@ var
   S: string;
 begin
   //Не запускать, если поля пустые
-  if (DomainEdit.Text = '') or (UserEdit.Text = '') or (PasswordEdit.Text = '') or
-    (SPortEdit.Text = '') or (HPortEdit.Text = '') or (BypassBox.Text = '') then Exit;
+  if (DomainEdit.Text = '') or (SPortEdit.Text = '') or (HPortEdit.Text = '') or
+    (BypassBox.Text = '') then Exit;
 
   //Не запускать ДО создания конфига Клиента и Сервера
   if not FileExists(GetUserDir + '.config/naivegui/client.json') then

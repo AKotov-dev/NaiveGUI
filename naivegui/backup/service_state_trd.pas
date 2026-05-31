@@ -39,9 +39,6 @@ begin
 
     ScanProcess := TProcess.Create(nil);
 
-    {ScanProcess.Executable := '/bin/bash';
-    ScanProcess.Parameters.Add('-c');}
-
     ScanProcess.Executable := 'systemctl';
     ScanProcess.Parameters.Add('--user');
     ScanProcess.Parameters.Add('is-active');
@@ -50,9 +47,7 @@ begin
 
     ScanProcess.Options := [poUsePipes, poWaitOnExit]; // poStderrToOutPut,
 
-    //Проверка локального порта клиента
-//    ScanProcess.Parameters.Add('systemctl --user is-active naivegui');
-
+    //Получение статуса сервиса
     ScanProcess.Execute;
 
     ResultStr.LoadFromStream(ScanProcess.Output);
@@ -73,17 +68,9 @@ begin
   with MainForm do
   begin
     if Trim(ResultStr.Text) = 'active' then
-    begin
-      Shape1.Brush.Color := clLime;
-      SPortEdit.Enabled := False;
-      HPortEdit.Enabled := False;
-    end
+      HPortEdit.Enabled := False
     else
-    begin
       Shape1.Brush.Color := clYellow;
-      SPortEdit.Enabled := True;
-      HPortEdit.Enabled := True;
-    end;
 
     Shape1.Repaint;
   end;
