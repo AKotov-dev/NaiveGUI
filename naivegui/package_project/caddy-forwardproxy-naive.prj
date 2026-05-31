@@ -2,10 +2,10 @@
 name=caddy-forwardproxy-naive
 
 [VERSION]
-version=2.10.0
+version=2.11.2
 
 [RELEASE]
-release=1.mrx9
+release=1.mrx10
 
 [GROUP]
 group=Accessibility
