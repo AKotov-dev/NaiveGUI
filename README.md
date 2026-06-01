@@ -29,7 +29,7 @@ systemctl enable caddy; systemctl restart caddy
 6. In NaiveGUI, verify that your server is reachable over HTTPS using the **"Check the page…"** link.
 7. If the domain is accessible, click **"Start"** and verify your proxy [using this test](https://whoer.net/ru).
 
-**Note:** To keep your free Caddy certificate working for longer than three months, use [this script](https://github.com/AKotov-dev/NaiveGUI/tree/main/naivegui/vps-cron).
+**Note:** To keep the free Caddy certificate valid for longer than three months, edit and use [this script](https://github.com/AKotov-dev/NaiveGUI/tree/main/naivegui/vps-cron).
 
 ---
 ### Connection Modes
