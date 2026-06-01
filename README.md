@@ -27,7 +27,7 @@ systemctl enable caddy; systemctl restart caddy
 ```
 7. **Wait 1–2 minutes** for Caddy to automatically obtain a free SSL certificate and for DNS to propagate.
 6. In NaiveGUI, verify that your server is reachable over HTTPS using the **"Check the page…"** link.
-7. If the domain is accessible, click **"Start"** and verify your proxy [using this test](https://whoer.net/ru).
+7. If the domain is accessible, click **"Retart"** button and verify your proxy [using this test](https://whoer.net/ru).
 
 **Note:** To keep the free Caddy certificate valid for longer than three months, edit and use [this script](https://github.com/AKotov-dev/NaiveGUI/tree/main/naivegui/vps-cron).
 
