@@ -23,7 +23,7 @@ Save the generated archive containing:
 **Important:** this package includes `/usr/bin/caddy` and provides a full web server. It is intended to be the only web server running on your VPS.
 5. Upload the `Caddyfile` to the server into `/etc/caddy` and start the service:
 ```
-systemctl restart caddy
+systemctl enable caddy; systemctl restart caddy
 ```
 6. In NaiveGUI, verify that your server is reachable over HTTPS using the **"Check the page…"** link.
 7. If the domain is accessible, click **"Start"** and verify your proxy [using this test](https://whoer.net/ru).
