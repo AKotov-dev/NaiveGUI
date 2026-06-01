@@ -15,7 +15,8 @@ Client/Server configuration GUI for NaiveProxy and Caddy.
 ## How It Works
 1. Rent a VPS located outside your country.
 2. Point a domain to your server’s IP address: buy one or use a [free option](https://www.duckdns.org/).
-3. Launch NaiveGUI, enter your domain name and click “Create Client and Server”.
+3. Launch NaiveGUI, enter your domain name and click “Create Client and Server”.  
+  
 Save the generated archive containing:
 - **client.json** — client configuration
 - **Caddyfile** — server configuration
