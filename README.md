@@ -16,16 +16,16 @@ Client/Server configuration GUI for NaiveProxy and Caddy.
 1. Rent a VPS located outside your country.
 2. Point a domain to your server’s IP address: buy one or use a [free option](https://www.duckdns.org/).
 3. Launch NaiveGUI, enter your domain name and click “Create Client and Server”.  
-  
-Save the generated archive containing:
+4. Save the generated archive containing:
 - **client.json** — client configuration
 - **Caddyfile** — server configuration
-4. Install the `caddy-forwardproxy-naive` package on your server.
+5. Install the `caddy-forwardproxy-naive` package on your server.
 **Important:** this package includes `/usr/bin/caddy` and provides a full web server. It is intended to be the only web server running on your VPS.
-5. Upload the `Caddyfile` to the server into `/etc/caddy` and start the service:
+6. Upload the `Caddyfile` to the server into `/etc/caddy` and start the service:
 ```
 systemctl enable caddy; systemctl restart caddy
 ```
+7. **Wait 1–2 minutes** for Caddy to automatically obtain a free SSL certificate and for DNS to propagate.
 6. In NaiveGUI, verify that your server is reachable over HTTPS using the **"Check the page…"** link.
 7. If the domain is accessible, click **"Start"** and verify your proxy [using this test](https://whoer.net/ru).
 ---
