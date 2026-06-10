@@ -208,7 +208,13 @@ begin
     S.Add('      { "tag": "local",  "type": "udp", "server": "8.8.4.4" }');
     S.Add('    ],');
     S.Add('    "rules": [');
-    S.Add('      { "domain_suffix": ["' + BypassBox.Text + '"], "server": "local" }');
+
+    //Поддержка зоны .рф
+    if BypassBox.Text <> '.ru' then
+      S.Add('      { "domain_suffix": ["' + BypassBox.Text + '"], "server": "local" }')
+    else
+      S.Add('      { "domain_suffix": [".ru", ".xn--p1ai"], "server": "local" }');
+
     S.Add('    ]');
     S.Add('  },');
     S.Add('');
@@ -253,7 +259,13 @@ begin
     S.Add('  "route": {');
     S.Add('    "rules": [');
     S.Add('      {');
-    S.Add('        "domain_suffix": ["' + BypassBox.Text + '"],');
+
+    //Поддержка зоны .рф
+    if BypassBox.Text <> '.ru' then
+      S.Add('        "domain_suffix": ["' + BypassBox.Text + '"],')
+    else
+      S.Add('        "domain_suffix": [".ru", ".xn--p1ai"],');
+
     S.Add('        "outbound": "direct"');
     S.Add('      }');
     S.Add('    ],');
