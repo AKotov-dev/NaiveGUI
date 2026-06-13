@@ -84,7 +84,7 @@ var
   FileContent: TStringList;
   JsonDoc: TJSONData;
   JsonObj: TJSONObject;
-//  ListenStr: string;
+  //  ListenStr: string;
   ProxyStr: string;
   Uri: TURI;
 begin
@@ -102,7 +102,7 @@ begin
       JsonObj := TJSONObject(JsonDoc);
 
       // 2. Читаем базовые строковые поля (безопасный метод с дефолтными значениями)
-  //    ListenStr := JsonObj.Get('listen', 'socks://127.0.0.1:11080');
+      // ListenStr := JsonObj.Get('listen', 'socks://127.0.0.1:11080');
       ProxyStr := JsonObj.Get('proxy', '');
 
       //   Writeln('Локальный адрес (Listen): ', ListenStr);
@@ -126,8 +126,8 @@ begin
       end;
 
       // 4. Опционально: чтение других параметров, если они есть в конфиге
-      if JsonObj.Find('concurrency') <> nil then
-        Writeln('Потоки: ', JsonObj.Integers['concurrency']);
+    {  if JsonObj.Find('concurrency') <> nil then
+        Writeln('Потоки: ', JsonObj.Integers['concurrency']); }
     end;
 
   finally
