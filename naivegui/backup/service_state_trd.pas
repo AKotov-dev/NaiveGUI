@@ -68,7 +68,7 @@ begin
   with MainForm do
   begin
     if Trim(ResultStr.Text) = 'active' then
-      HPortEdit.Enabled := False
+      Shape1.Brush.Color := clLime
     else
       Shape1.Brush.Color := clYellow;
 

@@ -85,8 +85,6 @@ begin
             P := Pos(#10, S);
             if P = 0 then Break;
 
-            // Result.Add(Trim(Copy(S, 1, P - 1)));
-
             Result.Add(Trim(StripANSI(Copy(S, 1, P - 1))));
 
             Delete(S, 1, P);

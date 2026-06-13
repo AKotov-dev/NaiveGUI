@@ -6,7 +6,8 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, Buttons,
-  ExtCtrls, DefaultTranslator, IniPropStorage, LCLIntf, StrUtils, FileUtil, Process;
+  ExtCtrls, DefaultTranslator, IniPropStorage, LCLIntf, StrUtils,
+  FileUtil, Process, fpjson, jsonparser, URIParser;
 
 type
 
@@ -52,6 +53,7 @@ type
     procedure CreateServerConfig;
     procedure CreateSWProxy;
     procedure StartProcess(command: string);
+    procedure ParseNaiveConfig(const FilePath: string);
 
   private
 
@@ -71,11 +73,68 @@ implementation
 uses start_trd, service_state_trd, JsonArrayHelper, Unit2;
 
 var
-  USER_NAME, AUTH_PASS: string;
+  USER_NAME, AUTH_PASS, PROTO, DOMAIN, naive_conf, xray_conf: string;
 
   {$R *.lfm}
 
   { TMainForm }
+
+procedure TMainForm.ParseNaiveConfig(const FilePath: string);
+var
+  FileContent: TStringList;
+  JsonDoc: TJSONData;
+  JsonObj: TJSONObject;
+  //  ListenStr: string;
+  ProxyStr: string;
+  Uri: TURI;
+begin
+  if not FileExists(FilePath) then Exit;
+
+  FileContent := TStringList.Create;
+  JsonDoc := nil;
+  try
+    // 1. Загружаем и парсим JSON
+    FileContent.LoadFromFile(FilePath);
+    JsonDoc := GetJSON(FileContent.Text);
+
+    if JsonDoc.JSONType = jtObject then
+    begin
+      JsonObj := TJSONObject(JsonDoc);
+
+      // 2. Читаем базовые строковые поля (безопасный метод с дефолтными значениями)
+      // ListenStr := JsonObj.Get('listen', 'socks://127.0.0.1:11080');
+      ProxyStr := JsonObj.Get('proxy', '');
+
+      //   Writeln('Локальный адрес (Listen): ', ListenStr);
+
+      // 3. Парсим сложную строку proxy (например, https://domain.com)
+      if ProxyStr <> '' then
+      begin
+        Uri := ParseURI(ProxyStr);
+
+     {   Writeln('Протокол: ', Uri.Protocol);
+        Writeln('Пользователь: ', Uri.Username);
+        Writeln('Пароль: ', Uri.Password);
+        Writeln('Хост/Домен: ', Uri.Host);
+        Writeln('Порт: ', Uri.Port); }
+
+        PROTO := Uri.Protocol;
+        USER_NAME := Uri.Username;
+        AUTH_PASS := Uri.Password;
+        DOMAIN := Uri.Host;
+
+      end;
+
+      // 4. Опционально: чтение других параметров, если они есть в конфиге
+    {  if JsonObj.Find('concurrency') <> nil then
+        Writeln('Потоки: ', JsonObj.Integers['concurrency']); }
+    end;
+
+  finally
+    JsonDoc.Free;
+    FileContent.Free;
+  end;
+end;
 
 //Общая процедура запуска команд (асинхронная)
 procedure TMainForm.StartProcess(command: string);
@@ -197,84 +256,106 @@ var
 begin
   try
     S := TStringList.Create;
+
+    // ~/.naivegui/naive.json
     S.Add('{');
-    S.Add('  "log": {');
-    S.Add('    "level": "info"');
-    S.Add('  },');
-    S.Add('');
-    S.Add('  "dns": {');
-    S.Add('    "servers": [');
-    S.Add('      { "tag": "remote", "type": "udp", "server": "1.1.1.1" },');
-    S.Add('      { "tag": "local",  "type": "udp", "server": "8.8.4.4" }');
-    S.Add('    ],');
-    S.Add('    "rules": [');
+    S.Add('  "listen": "socks://127.0.0.1:51347",');
 
-    //Поддержка зоны .рф
-    if BypassBox.Text <> '.ru' then
-      S.Add('      { "domain_suffix": ["' + BypassBox.Text + '"], "server": "local" }')
+    if QuicBox.Checked then
+      S.Add('  "proxy": "quic://' + USER_NAME + ':' + AUTH_PASS +
+        '@' + Trim(DomainEdit.Text) + '"')
     else
-      S.Add('      { "domain_suffix": [".ru", ".xn--p1ai"], "server": "local" }');
+      S.Add('  "proxy": "https://' + USER_NAME + ':' + AUTH_PASS +
+        '@' + Trim(DomainEdit.Text) + '"');
 
-    S.Add('    ]');
-    S.Add('  },');
-    S.Add('');
-    S.Add('  "inbounds": [');
-    S.Add('    {');
-    S.Add('      "type": "socks",');
-    S.Add('      "listen": "127.0.0.1",');
-    S.Add('      "listen_port": ' + SPortEdit.Text);
-    S.Add('    },');
-    S.Add('    {');
-    S.Add('      "type": "http",');
-    S.Add('      "listen": "127.0.0.1",');
-    S.Add('      "listen_port": ' + HPortEdit.Text);
-    S.Add('    }');
-    S.Add('  ],');
-    S.Add('');
-    S.Add('  "outbounds": [');
-    S.Add('    {');
-
-    //Используем TCP или QUIC?
-    if QUICBox.Checked then
-      S.Add('      "type": "naive",')
-    else
-      S.Add('      "type": "http",');
-
-    S.Add('      "tag": "proxy",');
-    S.Add('      "server": "' + DomainEdit.Text + '",');
-    S.Add('      "server_port": 443,');
-    S.Add('      "username": "' + USER_NAME + '",');
-    S.Add('      "password": "' + AUTH_PASS + '",');
-    S.Add('      "tls": {');
-    S.Add('        "enabled": true,');
-    S.Add('        "server_name": "' + DomainEdit.Text + '"');
-    S.Add('      }');
-    S.Add('    },');
-    S.Add('    {');
-    S.Add('      "type": "direct",');
-    S.Add('      "tag": "direct"');
-    S.Add('    }');
-    S.Add('  ],');
-    S.Add('');
-    S.Add('  "route": {');
-    S.Add('    "rules": [');
-    S.Add('      {');
-
-    //Поддержка зоны .рф
-    if BypassBox.Text <> '.ru' then
-      S.Add('        "domain_suffix": ["' + BypassBox.Text + '"],')
-    else
-      S.Add('        "domain_suffix": [".ru", ".xn--p1ai"],');
-
-    S.Add('        "outbound": "direct"');
-    S.Add('      }');
-    S.Add('    ],');
-    S.Add('    "final": "proxy",');
-    S.Add('   "default_domain_resolver": "remote"');
-    S.Add('  }');
     S.Add('}');
 
-    S.SaveToFile(GetUserDir + '.config/naivegui/client.json');
+    S.SaveToFile(GetUserDir + '.config/naivegui/naive.json');
+
+    // ~/.naivegui/xray.json
+    S.Clear;
+
+    S.Add('{');
+    S.Add('"log": {');
+    S.Add('  "loglevel": "info"');
+    S.Add('},');
+    S.Add('');
+
+    S.Add('"dns": {');
+    S.Add('  "servers": [');
+    S.Add('    "1.1.1.1",');
+    S.Add('    "8.8.8.8"');
+    S.Add('  ]');
+    S.Add('},');
+    S.Add('');
+
+    S.Add('"inbounds": [');
+    S.Add('  {');
+    S.Add('    "tag": "socks-in",');
+    S.Add('    "listen": "127.0.0.1",');
+    S.Add('    "port": ' + Trim(SPortEdit.Text) + ',');
+    S.Add('    "protocol": "socks",');
+    S.Add('    "settings": {');
+    S.Add('      "udp": false');
+    S.Add('    }');
+    S.Add('  },');
+    S.Add('');
+
+    S.Add('  {');
+    S.Add('    "tag": "http-in",');
+    S.Add('    "listen": "127.0.0.1",');
+    S.Add('    "port": ' + Trim(HPortEdit.Text) + ',');
+    S.Add('    "protocol": "http"');
+    S.Add('  }');
+    S.Add('],');
+    S.Add('');
+
+    S.Add('"outbounds": [');
+    S.Add('  {');
+    S.Add('    "tag": "naive",');
+    S.Add('    "protocol": "socks",');
+    S.Add('    "settings": {');
+    S.Add('      "servers": [');
+    S.Add('        {');
+    S.Add('          "address": "127.0.0.1",');
+    // Порт связки xray >> naive
+    S.Add('          "port": 51347');
+    S.Add('        }');
+    S.Add('      ]');
+    S.Add('    }');
+    S.Add('  },');
+    S.Add('');
+
+    S.Add('  {');
+    S.Add('    "tag": "direct",');
+    S.Add('    "protocol": "freedom"');
+    S.Add('  }');
+    S.Add('],');
+    S.Add('');
+
+    S.Add('"routing": {');
+    S.Add('  "domainStrategy": "AsIs",');
+    S.Add('');
+
+    S.Add('  "rules": [');
+    S.Add('    {');
+    S.Add('      "type": "field",');
+    S.Add('      "domain": [');
+
+    //Поддержка зоны .рф
+    if BypassBox.Text <> 'ru' then
+      S.Add('        "' + Trim(BypassBox.Text) + '"')
+    else
+      S.Add('        "ru", "xn--p1ai"');
+
+    S.Add('      ],');
+    S.Add('      "outboundTag": "direct"');
+    S.Add('    }');
+    S.Add('  ]');
+    S.Add('}');
+    S.Add('}');
+
+    S.SaveToFile(GetUserDir + '.config/naivegui/xray.json');
 
   finally
     S.Free
@@ -294,7 +375,7 @@ begin
     S.Add('}');
 
     S.Add('');
-    S.Add(':443, ' + DomainEdit.Text + ' {');
+    S.Add(':443, ' + Trim(DomainEdit.Text) + ' {');
     S.Add('   forward_proxy {');
     S.Add('                 basic_auth ' + USER_NAME + ' ' + AUTH_PASS);
     S.Add('                 hide_ip');
@@ -340,13 +421,12 @@ begin
 end;
 
 procedure TMainForm.FormShow(Sender: TObject);
-var
-  client_conf: string;
 begin
   //Масштабирование для Plasma
   IniPropStorage1.Restore;
 
-  client_conf := GetUserDir + '.config/naivegui/client.json';
+  naive_conf := GetUserDir + '.config/naivegui/naive.json';
+  xray_conf := GetUserDir + '.config/naivegui/xray.json';
 
   //PassBtn.Width := PasswordEdit.Height;
   QRBtn.Width := CreateBtn.Height;
@@ -357,24 +437,29 @@ begin
   //Запуск поток непрерывного чтения лога
   ShowLogTRD.Create(False);
 
-  if not FileExists(client_conf) then Exit;
+  if (not FileExists(naive_conf)) or (not FileExists(xray_conf)) then Exit;
 
   //Читаем параметры клиента
-  if JsonReadString(client_conf, 'outbounds[0].type') = 'http' then
+  ParseNaiveConfig(naive_conf);
+
+  if PROTO = 'https' then
     QUICBox.Checked := False
   else
     QUICBox.Checked := True;
 
-  DomainEdit.Text := JsonReadString(client_conf, 'outbounds[0].server');
+  DomainEdit.Text := DOMAIN;
 
-  //Юзер и пароль
-  USER_NAME := JsonReadString(client_conf, 'outbounds[0].username');
-  AUTH_PASS := JsonReadString(client_conf, 'outbounds[0].password');
+  //Юзер и пароль уже считаны из ~/.naivegui/naive.json
 
-  SPortEdit.Text := JsonReadString(client_conf, 'inbounds[0].listen_port');
-  HPortEdit.Text := JsonReadString(client_conf, 'inbounds[1].listen_port');
+  //Читаем порты из ~/.naivegui/xray.json
+  SPortEdit.Text := JsonReadString(xray_conf, 'inbounds[0].port');
+  HPortEdit.Text := JsonReadString(xray_conf, 'inbounds[1].port');
 
-  BypassBox.Text := JsonReadString(client_conf, 'dns.rules[0].domain_suffix[0]');
+  //Достаём байпас (возвращается domain:ru - первый из массива)
+ { BypassBox.Text := StringReplace(JsonReadString(xray_conf,
+    'routing.rules[0].domain[0]'), 'domain:', '', [rfIgnoreCase]);}
+
+  BypassBox.Text := JsonReadString(xray_conf, 'routing.rules[0].domain[0]');
 end;
 
 procedure TMainForm.Label10Click(Sender: TObject);
@@ -441,7 +526,7 @@ begin
 
     //Создаём архив и выгружаем
     StartProcess(
-      'cd ~/.config/naivegui; chmod 644 Caddyfile; tar -zcf naivegui_config.tar.gz Caddyfile client.json');
+      'cd ~/.config/naivegui; chmod 644 Caddyfile; tar -zcf naivegui_config.tar.gz Caddyfile naive.json xray.json');
 
     CopyFile(GetUserDir + '.config/naivegui/naivegui_config.tar.gz',
       SaveDialog1.FileName, [cffOverwriteFile]);
@@ -459,7 +544,7 @@ begin
   if (DomainEdit.Text = '') or (SPortEdit.Text = '') or (HPortEdit.Text = '') or
     (BypassBox.Text = '') then Exit;
 
-  if not FileExists(GetUserDir + '.config/naivegui/client.json') then Exit;
+  if (not FileExists(naive_conf)) or (not FileExists(xray_conf)) then Exit;
 
   //Определить протокол
   if QUICBox.Checked then protocol := 'naive+quic://'
@@ -483,7 +568,8 @@ begin
     (BypassBox.Text = '') then Exit;
 
   //Не запускать ДО создания конфига Клиента и Сервера
-  if not FileExists(GetUserDir + '.config/naivegui/client.json') then
+  if (not FileExists(GetUserDir + '.config/naivegui/naive.json')) or
+    (not FileExists(GetUserDir + '.config/naivegui/xray.json')) then
   begin
     MessageDlg(SNoConfiguration, mtWarning, [mbOK], 0);
     Exit;
@@ -497,8 +583,8 @@ begin
   //Включаем прокси
   RunCommand('/bin/bash', ['-c', '~/.config/naivegui/swproxy.sh set'], S);
 
-  RunCommand('systemctl', ['--user', 'restart', 'naivegui.service'], S, [poWaitOnExit]);
-  RunCommand('systemctl', ['--user', 'enable', 'naivegui.service'], S, [poWaitOnExit]);
+  RunCommand('systemctl', ['--user', 'restart', 'naive.service'], S, [poWaitOnExit]);
+  RunCommand('systemctl', ['--user', 'enable', 'naive.service'], S, [poWaitOnExit]);
 end;
 
 //Stop + Disable
@@ -511,8 +597,8 @@ begin
   //Отключаем системный прокси
   RunCommand('/bin/bash', ['-c', '~/.config/naivegui/swproxy.sh unset'], S);
 
-  RunCommand('systemctl', ['--user', 'stop', 'naivegui.service'], S, [poWaitOnExit]);
-  RunCommand('systemctl', ['--user', 'disable', 'naivegui.service'], S, [poWaitOnExit]);
+  RunCommand('systemctl', ['--user', 'stop', 'naive.service'], S, [poWaitOnExit]);
+  RunCommand('systemctl', ['--user', 'disable', 'naive.service'], S, [poWaitOnExit]);
 end;
 
 end.

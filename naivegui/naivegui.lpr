@@ -21,7 +21,7 @@ uses
 
 begin
   RequireDerivedFormResource := True;
-  Application.Title:='NaiveGUI v0.5.1';
+  Application.Title:='NaiveGUI v0.6';
   Application.Scaled:=True;
   {$PUSH}
   {$WARN 5044 OFF}

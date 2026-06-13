@@ -2,7 +2,7 @@
 name=naivegui
 
 [VERSION]
-version=0.5
+version=0.6
 
 [RELEASE]
 release=0.mrx10
@@ -45,11 +45,12 @@ deb=1
 [FILES]
 0=/usr/bin/naivegui
 1=/usr/share/icons/naivegui.png
-2=/etc/systemd/user/naivegui.service
-3=/usr/share/applications/naivegui.desktop
-4=/opt/naivegui/
-5=/usr/share/naivegui/
-6=/usr/share/doc/naivegui/
+2=/etc/systemd/user/naive.service
+3=/etc/systemd/user/naive-xray.service
+4=/usr/share/applications/naivegui.desktop
+5=/opt/naivegui/
+6=/usr/share/naivegui/
+7=/usr/share/doc/naivegui/
 
 [AFTERINSTALL]
 0=#!/bin/bash
@@ -74,26 +75,33 @@ devtool=Lazarus
 toolversion=4.4
 
 [INFO]
-0=v0.5
-1=+ sing-box-1.13.12
-2=+ Automatic creation of USER_NAME and AUTH_PASS
+0=v0.6
+1=+ Replace `sing-box` with `naive + xray`
+2=+ HTTPS mode: Improved responsiveness with HTTP/2
 3=+ Self-contained RPM & DEB packages
 4=
-5=v0.4
-6=+ sing-box-1.13.5
-7=+ Improved service startup control
-8=+ Self-contained RPM & DEB packages
-9=
-10=v0.3
-11=+ sing-box 1.13.4
-12=+ Cosmetic changes
-13=+ RPM (Mageia-9/10), DEB (Ubuntu)
-14=
-15=v0,2
-16=+ Server: improved configuration
-17=+ Client: added QR code connection
-18=+ RPM (Mageia-9/10), DEB (Ubuntu)
-19=
-20=v0.1
-21=+ Initial Release
-22=+ RPM (Mageia-9) and Ubuntu packages
+5=**Note:** The configurator has been completely redesigned. The reason is that sing-box doesn't guarantee [quic=false](https://github.com/SagerNet/sing-box/issues/4181) switching, which can cause the connection to be blocked. This behavior is only observed on desktops. You need to recreate your connection to the server.
+6=
+7=v0.5
+8=+ sing-box-1.13.12
+9=+ Automatic creation of USER_NAME and AUTH_PASS
+10=+ Self-contained RPM & DEB packages
+11=
+12=v0.4
+13=+ sing-box-1.13.5
+14=+ Improved service startup control
+15=+ Self-contained RPM & DEB packages
+16=
+17=v0.3
+18=+ sing-box 1.13.4
+19=+ Cosmetic changes
+20=+ RPM (Mageia-9/10), DEB (Ubuntu)
+21=
+22=v0,2
+23=+ Server: improved configuration
+24=+ Client: added QR code connection
+25=+ RPM (Mageia-9/10), DEB (Ubuntu)
+26=
+27=v0.1
+28=+ Initial Release
+29=+ RPM (Mageia-9) and Ubuntu packages

@@ -60,7 +60,7 @@ begin
     ExProcess.Executable := 'journalctl';
     ExProcess.Parameters.Add('--user');
     ExProcess.Parameters.Add('-u');
-    ExProcess.Parameters.Add('naivegui');
+    ExProcess.Parameters.Add('naive-xray');
     ExProcess.Parameters.Add('-f');
     ExProcess.Parameters.Add('-o');
     ExProcess.Parameters.Add('cat');

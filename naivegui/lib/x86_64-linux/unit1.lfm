@@ -320,15 +320,15 @@ object MainForm: TMainForm
     Font.Style = [fsBold]
     ItemHeight = 0
     Items.Strings = (
-      '.by'
-      '.cn'
-      '.ir'
-      '.kz'
-      '.ru'
-      '.sa'
-      '.tm'
-      '.tr'
-      '.uz'
+      'by'
+      'cn'
+      'ir'
+      'kz'
+      'ru'
+      'sa'
+      'tm'
+      'tr'
+      'uz'
     )
     ParentFont = False
     Sorted = True

@@ -42,7 +42,7 @@ begin
     ScanProcess.Executable := 'systemctl';
     ScanProcess.Parameters.Add('--user');
     ScanProcess.Parameters.Add('is-active');
-    ScanProcess.Parameters.Add('naivegui.service');
+    ScanProcess.Parameters.Add('naive.service');
 
 
     ScanProcess.Options := [poUsePipes, poWaitOnExit]; // poStderrToOutPut,
