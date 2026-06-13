@@ -59,11 +59,9 @@
       <Unit>
         <Filename Value="start_trd.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="1"/>
-        <TopLine Value="102"/>
-        <CursorPos X="52" Y="107"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="17"/>
         <UsageCount Value="46"/>
-        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="service_state_trd.pas"/>
