@@ -47,4 +47,4 @@ Budgie, GNOME, Cinnamon, Plasma 5/6, MATE. To use the system proxy in LXDE and X
 For Android smartphones, it is convenient to use [NekoBox](https://github.com/MatsuriDayo/NekoBoxForAndroid/releases) / [Exclave](https://github.com/ExclaveNetwork/Exclave/releases) + [naiveproxy-plugin](https://github.com/klzgrad/naiveproxy/releases).
 
 ### Useful links
-[naiveproxy](https://github.com/klzgrad/naiveproxy?tab=readme-ov-file), [forwardproxy](https://github.com/klzgrad/forwardproxy), [sing-box](https://github.com/SagerNet/sing-box)
+[naiveproxy](https://github.com/klzgrad/naiveproxy?tab=readme-ov-file), [forwardproxy](https://github.com/klzgrad/forwardproxy), [xray-core](https://github.com/xtls/xray-core)
