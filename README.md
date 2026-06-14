@@ -7,7 +7,7 @@ Client/Server configuration GUI for NaiveProxy and Caddy.
 + Ubuntu (DEB): libproxy1v5 systemd libgtk2.0-0
 
 **Work directories / services:**
-+ Client: ~/.config/naivegui; Service: /etc/systemd/user/naivegui.service
++ Client: ~/.config/naivegui; Service: /etc/systemd/user/naive.service
 + Server: /etc/caddy; Service: /etc/systemd/system/caddy.service
 
 ![](https://github.com/AKotov-dev/NaiveGUI/blob/main/Screenshot3.png)
