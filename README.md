@@ -2,7 +2,6 @@
 Client/Server configuration GUI for NaiveProxy and Caddy.  
   
 **Dependencies:**
-+ Mageia-9 (RPM): gtk2 systemd lib64proxy-gnome lib64proxy-kde
 + Mageia-10 (RPM): gtk2 systemd lib64proxy-gnome
 + Ubuntu (DEB): libproxy1v5 systemd libgtk2.0-0
 
