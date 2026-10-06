@@ -40,7 +40,7 @@ In some regions, QUIC may be blocked or unstable, so **HTTPS is usually the pref
 You can test the connection speed in each mode using the **"Checking connection speed…"** link in NaiveGUI.
 
 ### Supported DEs
-Budgie, GNOME, Cinnamon, Plasma 5/6, MATE. To use the system proxy in LXDE, XFCE and LXQt, install [XDE-Proxy-GUI](https://github.com/AKotov-dev/xde-proxy-gui).
+Budgie, GNOME, Cinnamon, Plasma 5/6, MATE. To use the system proxy in LXDE/XFCE/LXQt, install [XDE-Proxy-GUI](https://github.com/AKotov-dev/xde-proxy-gui).
 
 ### Smartphones and QR codes
 For Android smartphones, it is convenient to use [NekoBox](https://github.com/MatsuriDayo/NekoBoxForAndroid/releases) / [Exclave](https://github.com/ExclaveNetwork/Exclave/releases) + [naiveproxy-plugin](https://github.com/klzgrad/naiveproxy/releases).
