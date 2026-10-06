@@ -2,7 +2,7 @@
 name=naivegui
 
 [VERSION]
-version=0.6
+version=0.6.1
 
 [RELEASE]
 release=0.mrx10
@@ -75,34 +75,38 @@ devtool=Lazarus
 toolversion=4.4
 
 [INFO]
-0=v0.6
-1=+ Extended domain bypass .ru + .рф
-2=+ Replace `sing-box` with `naive + xray`
-3=+ HTTPS mode: Improved responsiveness with HTTP/2
-4=+ Self-contained RPM & DEB packages
-5=
-6=**Note:** The configurator has been completely redesigned. The reason is that sing-box doesn't guarantee [quic=false](https://github.com/SagerNet/sing-box/issues/4181) switching, which can cause the connection to be blocked. This behavior is only observed on desktops. You need to recreate your connection to the server.
-7=
-8=v0.5
-9=+ sing-box-1.13.12
-10=+ Automatic creation of USER_NAME and AUTH_PASS
-11=+ Self-contained RPM & DEB packages
-12=
-13=v0.4
-14=+ sing-box-1.13.5
-15=+ Improved service startup control
-16=+ Self-contained RPM & DEB packages
-17=
-18=v0.3
-19=+ sing-box 1.13.4
-20=+ Cosmetic changes
-21=+ RPM (Mageia-9/10), DEB (Ubuntu)
-22=
-23=v0,2
-24=+ Server: improved configuration
-25=+ Client: added QR code connection
-26=+ RPM (Mageia-9/10), DEB (Ubuntu)
-27=
-28=v0.1
-29=+ Initial Release
-30=+ RPM (Mageia-9) and Ubuntu packages
+0=v0.6.1
+1=+ naiveproxy v154.0.8037.49-3
+2=+ Self-contained RPM & DEB packages
+3=
+4=v0.6
+5=+ Extended domain bypass .ru + .рф
+6=+ Replace `sing-box` with `naive + xray`
+7=+ HTTPS mode: Improved responsiveness with HTTP/2
+8=+ Self-contained RPM & DEB packages
+9=
+10=**Note:** The configurator has been completely redesigned. The reason is that sing-box doesn't guarantee [quic=false](https://github.com/SagerNet/sing-box/issues/4181) switching, which can cause the connection to be blocked. This behavior is only observed on desktops. You need to recreate your connection to the server.
+11=
+12=v0.5
+13=+ sing-box-1.13.12
+14=+ Automatic creation of USER_NAME and AUTH_PASS
+15=+ Self-contained RPM & DEB packages
+16=
+17=v0.4
+18=+ sing-box-1.13.5
+19=+ Improved service startup control
+20=+ Self-contained RPM & DEB packages
+21=
+22=v0.3
+23=+ sing-box 1.13.4
+24=+ Cosmetic changes
+25=+ RPM (Mageia-9/10), DEB (Ubuntu)
+26=
+27=v0,2
+28=+ Server: improved configuration
+29=+ Client: added QR code connection
+30=+ RPM (Mageia-9/10), DEB (Ubuntu)
+31=
+32=v0.1
+33=+ Initial Release
+34=+ RPM (Mageia-9) and Ubuntu packages

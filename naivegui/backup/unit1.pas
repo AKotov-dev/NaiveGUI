@@ -504,6 +504,9 @@ begin
     if MessageDlg(SConfigutarionFound, mtConfirmation, [mbYes, mbNo], 0) <> mrYes then
       Exit;
 
+  //Останов подключения
+  StopBtn.Click;
+
   // Генерация случайных USER_NAME и AUTH_PASS
   USER_NAME := GenerateString(10);
   AUTH_PASS := GenerateString(16);
