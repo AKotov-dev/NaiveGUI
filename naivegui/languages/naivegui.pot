@@ -32,10 +32,6 @@ msgstr ""
 msgid "Checking connection speed..."
 msgstr ""
 
-#: tmainform.label10.hint
-msgid "https://www.speedtest.net"
-msgstr ""
-
 #: tmainform.label11.caption
 msgid "Bypass"
 msgstr ""
@@ -105,6 +101,12 @@ msgstr ""
 
 #: unit1.sconfigutarionfound
 msgid "The configuration has already been created! Overwrite?"
+msgstr ""
+
+#: unit1.serrorloadconfig
+msgid ""
+"Configuration error! \n"
+"Fill in all fields and click the \"Restart\" button."
 msgstr ""
 
 #: unit1.snoconfiguration

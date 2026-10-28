@@ -1,11 +1,11 @@
 object MainForm: TMainForm
-  Left = 324
+  Left = 325
   Height = 628
-  Top = 128
-  Width = 821
+  Top = 129
+  Width = 841
   Caption = 'NaiveGUI'
   ClientHeight = 628
-  ClientWidth = 821
+  ClientWidth = 841
   SessionProperties = 'Height;Left;Top;Width;SaveDialog1.InitialDir'
   LCLVersion = '4.4.0.0'
   OnCreate = FormCreate
@@ -36,7 +36,7 @@ object MainForm: TMainForm
     AnchorSideLeft.Control = CreateBtn
     AnchorSideRight.Control = StopBtn
     AnchorSideBottom.Side = asrBottom
-    Left = 571
+    Left = 591
     Height = 37
     Top = 152
     Width = 134
@@ -51,7 +51,7 @@ object MainForm: TMainForm
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = StartBtn
     AnchorSideBottom.Side = asrBottom
-    Left = 713
+    Left = 733
     Height = 37
     Top = 152
     Width = 100
@@ -85,7 +85,7 @@ object MainForm: TMainForm
   object CreateBtn: TSpeedButton
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
-    Left = 571
+    Left = 591
     Height = 60
     Top = 8
     Width = 242
@@ -238,7 +238,7 @@ object MainForm: TMainForm
   object Label8: TLabel
     AnchorSideTop.Control = Label7
     AnchorSideTop.Side = asrCenter
-    Left = 182
+    Left = 187
     Height = 17
     Top = 112
     Width = 34
@@ -264,7 +264,7 @@ object MainForm: TMainForm
     AnchorSideTop.Control = SPortEdit
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Side = asrBottom
-    Left = 219
+    Left = 224
     Height = 37
     Top = 102
     Width = 100
@@ -276,7 +276,7 @@ object MainForm: TMainForm
     AnchorSideTop.Control = StartBtn
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = StartBtn
-    Left = 557
+    Left = 577
     Height = 12
     Top = 164
     Width = 11
@@ -296,7 +296,7 @@ object MainForm: TMainForm
     Left = 0
     Height = 20
     Top = 608
-    Width = 821
+    Width = 841
     Anchors = [akLeft, akRight, akBottom]
     Caption = 'License: GPLv3   Author: alex_q_2000 (C) 2026   https://github.com/AKotov-dev/NaiveGUI'
     Font.Color = clGray
@@ -310,7 +310,7 @@ object MainForm: TMainForm
     AnchorSideLeft.Side = asrBottom
     AnchorSideTop.Control = SPortEdit
     AnchorSideTop.Side = asrCenter
-    Left = 394
+    Left = 403
     Height = 37
     Top = 102
     Width = 100
@@ -338,7 +338,7 @@ object MainForm: TMainForm
   object Label11: TLabel
     AnchorSideTop.Control = Label7
     AnchorSideTop.Side = asrCenter
-    Left = 350
+    Left = 359
     Height = 17
     Top = 112
     Width = 41
@@ -355,7 +355,7 @@ object MainForm: TMainForm
     Left = 0
     Height = 404
     Top = 204
-    Width = 821
+    Width = 841
     Anchors = [akTop, akLeft, akRight, akBottom]
     BorderSpacing.Top = 15
     Font.Height = -12
@@ -371,7 +371,7 @@ object MainForm: TMainForm
     AnchorSideTop.Control = SPortEdit
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Side = asrBottom
-    Left = 571
+    Left = 591
     Height = 32
     Hint = 'The protocol may be blocked in Russia'
     Top = 104
@@ -384,7 +384,7 @@ object MainForm: TMainForm
   object Image1: TImage
     Left = 749
     Height = 64
-    Top = 80
+    Top = 75
     Width = 64
     AutoSize = True
     Picture.Data = {
@@ -512,7 +512,6 @@ object MainForm: TMainForm
     Cursor = crHandPoint
     Left = 8
     Height = 17
-    Hint = 'https://www.speedtest.net'
     Top = 172
     Width = 174
     Anchors = [akLeft, akBottom]
@@ -531,7 +530,7 @@ object MainForm: TMainForm
     AnchorSideRight.Control = CreateBtn
     AnchorSideBottom.Control = CreateBtn
     AnchorSideBottom.Side = asrBottom
-    Left = 509
+    Left = 529
     Height = 60
     Hint = 'Show QR code (NekoBox, Exclave)'
     Top = 8

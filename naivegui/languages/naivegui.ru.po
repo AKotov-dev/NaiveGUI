@@ -42,10 +42,6 @@ msgstr "Домен"
 msgid "Checking connection speed..."
 msgstr "Проверка скорости подключения..."
 
-#: tmainform.label10.hint
-msgid "https://www.speedtest.net"
-msgstr ""
-
 #: tmainform.label11.caption
 msgid "Bypass"
 msgstr "Байпас"
@@ -119,6 +115,15 @@ msgstr "QR-код"
 msgid "The configuration has already been created! Overwrite?"
 msgstr "Конфигурация уже создавалась! Перезаписать?"
 
+#: unit1.serrorloadconfig
+msgid ""
+"Configuration error! \n"
+"Fill in all fields and click the \"Restart\" button."
+msgstr ""
+"Ошибка конфигурации!\n"
+"Заполните все поля и нажмите \"Рестарт\"."
+
 #: unit1.snoconfiguration
 msgid "To run, you need to create a configuration!"
 msgstr "Для запуска нужно создать конфигурацию!"
+

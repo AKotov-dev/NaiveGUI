@@ -67,6 +67,9 @@ var
 resourcestring
   SNoConfiguration = 'To run, you need to create a configuration!';
   SConfigutarionFound = 'The configuration has already been created! Overwrite?';
+  SErrorLoadConfig =
+    'Configuration error! ' + #13#10 +
+    'Fill in all fields and click the "Restart" button.';
 
 implementation
 
@@ -281,13 +284,14 @@ begin
     S.Add('},');
     S.Add('');
 
-    S.Add('"dns": {');
+  { S.Add('"dns": {');
     S.Add('  "servers": [');
     S.Add('    "1.1.1.1",');
     S.Add('    "8.8.8.8"');
     S.Add('  ]');
     S.Add('},');
     S.Add('');
+   }
 
     S.Add('"inbounds": [');
     S.Add('  {');
@@ -421,50 +425,66 @@ begin
 end;
 
 procedure TMainForm.FormShow(Sender: TObject);
+var
+  DNSProto: string;
 begin
-  //Масштабирование для Plasma
-  IniPropStorage1.Restore;
+  try
 
-  naive_conf := GetUserDir + '.config/naivegui/naive.json';
-  xray_conf := GetUserDir + '.config/naivegui/xray.json';
+    //Масштабирование для Plasma
+    IniPropStorage1.Restore;
 
-  //PassBtn.Width := PasswordEdit.Height;
-  QRBtn.Width := CreateBtn.Height;
+    naive_conf := GetUserDir + '.config/naivegui/naive.json';
+    xray_conf := GetUserDir + '.config/naivegui/xray.json';
 
-  //Запуск потока проверки состояния сервиса (active/inactive)
-  ServiceState.Create(False);
+    //PassBtn.Width := PasswordEdit.Height;
+    QRBtn.Width := CreateBtn.Height;
 
-  //Запуск поток непрерывного чтения лога
-  ShowLogTRD.Create(False);
+    //Запуск потока проверки состояния сервиса (active/inactive)
+    ServiceState.Create(False);
 
-  if (not FileExists(naive_conf)) or (not FileExists(xray_conf)) then Exit;
+    //Запуск поток непрерывного чтения лога
+    ShowLogTRD.Create(False);
 
-  //Читаем параметры клиента
-  ParseNaiveConfig(naive_conf);
+    if (not FileExists(naive_conf)) or (not FileExists(xray_conf)) then Exit;
 
-  if PROTO = 'https' then
-    QUICBox.Checked := False
-  else
-    QUICBox.Checked := True;
+    //Читаем параметры клиента
+    ParseNaiveConfig(naive_conf);
 
-  DomainEdit.Text := DOMAIN;
+    if PROTO = 'https' then
+      QUICBox.Checked := False
+    else
+      QUICBox.Checked := True;
 
-  //Юзер и пароль уже считаны из ~/.naivegui/naive.json
+    DomainEdit.Text := DOMAIN;
 
-  //Читаем порты из ~/.naivegui/xray.json
-  SPortEdit.Text := JsonReadString(xray_conf, 'inbounds[0].port');
-  HPortEdit.Text := JsonReadString(xray_conf, 'inbounds[1].port');
+    //Юзер и пароль уже считаны из ~/.naivegui/naive.json
 
-  //Достаём байпас (возвращается domain:ru - первый из массива)
+    //Читаем порты из ~/.naivegui/xray.json
+    SPortEdit.Text := JsonReadString(xray_conf, 'inbounds[0].port');
+    HPortEdit.Text := JsonReadString(xray_conf, 'inbounds[1].port');
+
+    //Достаём байпас (возвращается domain:ru - первый из массива)
  { BypassBox.Text := StringReplace(JsonReadString(xray_conf,
     'routing.rules[0].domain[0]'), 'domain:', '', [rfIgnoreCase]);}
 
-  BypassBox.Text := JsonReadString(xray_conf, 'routing.rules[0].domain[0]');
+    BypassBox.Text := JsonReadString(xray_conf, 'routing.rules[0].domain[0]');
+
+  except
+    MessageDlg(SErrorLoadConfig, mtWarning, [mbOK], 0);
+  end;
 end;
 
+//https://mysygnal.net/
+//https://mysygnal.net/ru
+//https://www.speedtest.net/
+//https://speed.cloudflare.com/
+//https://speed.measurementlab.net/
 procedure TMainForm.Label10Click(Sender: TObject);
 begin
-  OpenURL('https://www.speedtest.net/');
+  //OpenURL('https://www.speedtest.net/');
+  //OpenURL('https://speed.cloudflare.com/');
+  OpenURL('https://speed.measurementlab.net/');
+  //OpenURL('https://mysygnal.net/ru');
 end;
 
 procedure TMainForm.Label10MouseEnter(Sender: TObject);
