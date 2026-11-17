@@ -1,0 +1,20 @@
+[Unit]
+Description=NaiveProxy Client
+After=network-online.target naive-xray.service
+Wants=network-online.target
+# Жесткая зависимость: naive не включится без xray
+Requires=naive-xray.service
+
+
+[Service]
+Type=exec
+
+ExecStart=/opt/naivegui/naive -c %h/.config/naivegui/naive.json
+
+Restart=on-failure
+RestartPreventExitStatus=23
+ProtectSystem=full
+PrivateTmp=true
+
+[Install]
+WantedBy=default.target

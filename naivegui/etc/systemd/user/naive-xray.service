@@ -1,0 +1,20 @@
+[Unit]
+Description=Xray for Naive Service
+After=network-online.target
+Wants=network-online.target
+# Связываем с naive: если naive останавливается или перезапускается, то и xray сделает то же самое
+PartOf=naive.service
+
+[Service]
+Type=exec
+
+ExecStart=/opt/naivegui/xray run -c %h/.config/naivegui/xray.json
+
+Restart=on-failure
+# Подождать 5 секунд перед следующей попыткой запуска, если сеть лежит
+RestartSec=5s
+ProtectSystem=full
+PrivateTmp=true
+
+[Install]
+WantedBy=default.target
