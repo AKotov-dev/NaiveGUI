@@ -76,8 +76,8 @@ toolversion=4.4
 
 [INFO]
 0=v0.6.3
-1=+ NaiveGUI: Automatic connection startup after reboot
-2=+ NaiveGUI: RPM & DEB packages
+1=+ Automatic connection startup after reboot
+2=+ Self-contained RPM & DEB packages
 3=
 4=**The server remains unchanged**
 5=+ [caddy-forwardproxy-naive-2.11.7-2.mrx10.x86_64.rpm](https://github.com/AKotov-dev/NaiveGUI/releases/download/v0.6.2/caddy-forwardproxy-naive-2.11.7-2.mrx10.x86_64.rpm)
